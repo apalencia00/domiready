@@ -11,9 +11,9 @@ class Conexion {
     var $db, $connection;
     
     private $server = "localhost" ;
-    private $database = "mandaos_db" ;
-    private  $username = "" ;
-    private  $password = "";
+    private $database = "domiready_db" ;
+    private  $username = "domiready_u" ;
+    private  $password = "/*-domiready_pw";
     
     private $link ;
 
@@ -28,8 +28,8 @@ class Conexion {
     $pass = $_REQUEST['pw'];
 }else{
 
-    $user="mandaos";
-    $pass="m4nd40s1";
+    $user = "domiready_u";
+    $pass = "/*-domiready_pw";
     
 }
         

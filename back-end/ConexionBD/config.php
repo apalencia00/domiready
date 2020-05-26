@@ -16,15 +16,15 @@ session_start();
 	$user=$_SESSION['un'];
 	$pass=$_SESSION['pw'];
 }else{
-	$user="mandaos";
-	$pass="m4nd40s";
+	$user="domiready_u";
+	$pass="/*-domiready_pw";
 	
 }
 
-        $bd_name = "mandaos_db";
+        $bd_name = "domiready_db";
 
     define('DB_HOST','localhost'); 
     define('DB_USER',$user); 
     define('DB_PASS',$pass); 
-    define('DB_NAME','mandaos_db'); 
+    define('DB_NAME','domiready_db'); 
     define('DB_CHARSET','utf-8'); 
