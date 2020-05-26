@@ -1,0 +1,606 @@
+
+<?php
+
+session_start();
+
+if($_SESSION['admon_mod'] != 0 || $_SESSION['admon_mod'] != ""  )  {
+
+$permisos = $_SESSION['admon_mod'];
+
+$datos_mod = json_decode($permisos,true);
+
+$usuario = $datos_mod[0]["nusuadoc"];
+
+?>
+
+<html>
+
+<head>
+
+<style type="text/css">
+  
+  form input[type="select"]:required:valid{
+     border:2px solid green;
+  }
+
+form input[type="text"]:required:valid{
+ border:2px solid green;
+ /* otras propiedades */
+}
+/*caso contrario, el color sera rojo*/
+form input[type="text"]:focus:required:invalid{
+ border:2px solid red;
+ /* otras propiedades */
+}
+
+select.invalid ~ .select-dropdown {
+ border:2px solid red;
+ /* otras propiedades */
+}
+
+
+
+</style>
+
+<title>SERVICIOS GENERALES</title>
+<link rel="stylesheet" type="text/css" href="css/stiloservicio.css" />
+<link rel="stylesheet" href="css/minified/jquery-ui.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+
+  </head>
+
+
+<script type="text/javascript">
+
+function tipoPago(){
+        
+        $.ajax({ url: "../back-end/Source/Parametrico.php", 
+         type: "GET",
+         contentType: "application/json",
+         dataType: 'json',
+         data: { "oper" : 20 },
+                 
+         success: function(json){ 
+             
+             console.log(json);
+             
+                var $select = $('#t_pago'); 
+                $select.find('option').remove();  
+                
+                for(var i = 0; json.length; i ++){
+                
+                $select.append('<option value=' + json[i]['id_tipopago'] + '>' + json[i]['descripcion'] + '</option>');
+            }
+    }});
+        
+        
+    }
+
+
+function obtenerDatos(){
+
+    var num_ide = document.getElementById("num").value;
+
+    $.ajax({ url: "../back-end/Source/Servicio_Despacho.php", 
+         type: "GET",
+         contentType: "application/json",
+         dataType: 'json',
+         data: { "oper" : 6, "num" : num_ide},
+     
+      success: function(json){ 
+
+             var content = json.data[0].obs;
+              $("#servicio").val(content);
+          
+         document.getElementById("ide").value = json.data[0].n_ide;
+
+       
+         document.getElementById("nomb").value = json.data[0].clinom;
+
+        document.getElementById("tele").value = json.data[0].clitel;
+
+        document.getElementById("cel").value = json.data[0].clicel;
+
+        document.getElementById("total").value = json.data[0].total;
+
+        document.getElementById("diro").value = json.data[0].dir_proc;
+
+        document.getElementById("dird").value = json.data[0].dir_dest;
+
+        document.getElementById("dirdesv1").value = json.data[0].dir_rta1;
+
+        document.getElementById("dirdesv2").value = json.data[0].dir_rta2;
+
+        document.getElementById("dirdesv3").value = json.data[0].dir_rta3;
+
+        document.getElementById("dirdesv4").value = json.data[0].dir_rta4;
+        document.getElementById("dirdesv5").value = json.data[0].dir_rta5;
+        document.getElementById("dirdesv6").value = json.data[0].dir_rta6;
+        document.getElementById("dirdesv7").value = json.data[0].dir_rta7;
+
+        document.getElementById("num_mobilre").value = json.data[0].num_mob;
+
+        document.getElementById("t_pago").value = json.data[0].t_pago;
+
+
+        
+    
+    }
+
+
+});
+
+
+
+}
+
+function proceder() {
+
+//
+var operacion = document.getElementById("operacion").value;
+
+var ide = document.getElementById("ide").value;
+
+var num = document.getElementById("num").value;
+
+var valor = document.getElementById("total").value;
+
+var tipo_pago = document.getElementById("t_pago").value;
+
+var nomb = document.getElementById("nomb").value;
+
+var tele = document.getElementById("tele").value;
+
+var cel = document.getElementById("cel").value;
+
+var fecha = document.getElementById("fecha").value;
+
+var num_mobilre = document.getElementById("num_mobilre").value;
+
+var diro = document.getElementById("diro").value;
+
+var dird = document.getElementById("dird").value;
+
+var dirdesv1 = document.getElementById("dirdesv1").value;
+
+var dirdesv2 = document.getElementById("dirdesv2").value;
+
+var dirdesv3 = document.getElementById("dirdesv3").value;
+
+var dirdesv4 = document.getElementById("dirdesv4").value;
+
+var dirdesv5 = document.getElementById("dirdesv5").value;
+
+var dirdesv6 = document.getElementById("dirdesv6").value;
+
+var dirdesv7 = document.getElementById("dirdesv7").value;
+
+var obs      = document.getElementById("servicio").value;
+
+if( operacion != 0 && num_mobilre != "" && tipo_pago != 0 ){
+
+  $.ajax({ url: "../back-end/Source/Servicio_Despacho.php", 
+         type: "GET",
+         contentType: "application/json",
+         dataType: 'json',
+         data: { "oper" : 7 , "operacion" : operacion, "ide" : ide, "num" : num, "valor" : valor, "tpago" : tipo_pago, "nomb" : nomb, "tele" : tele, "cel" : cel, "num_mobilre" : num_mobilre, "diro" : diro, "dird" : dird, "dirdesv1" : dirdesv1, "dirdesv2" : dirdesv2, "dirdesv3" : dirdesv3, "dirdesv4" : dirdesv4, "dirdesv5" : dirdesv5, "dirdesv6" : dirdesv6, "dirdesv7" : dirdesv7, "obs" : obs },
+
+        success: function(json){ 
+          //var dirdesv4 = document.getElementById("dirdesv4").value;
+              console.log("Aqui entro// bacano");
+        var res = json[0].success;//
+
+        if(res=="t"){
+			//console.debug(json);
+      alert(json[0].mensaje);
+      window.opener.location.reload(false);
+		   window.close();
+
+        }else{
+          alert("Error para" + "# ");
+        }
+    
+    }
+
+});
+
+}else{
+  alert("Seleccine operacion servicio valido y movil");
+}
+
+
+
+}
+
+function transaccion_operacion(valor){
+
+  if(valor === "2" || valor === "3"){
+
+    $('#num_mobilre').prop('disabled', 'disabled');
+    $('#num_mobilre').prop('disabled', 'disabled');
+    document.getElementById("total").value = "$ 0.00";
+
+   var valid = true;
+
+   var c = $("#form").serialize();
+   
+
+            $('.dialog').css('display','block');
+           
+            var dialog1 = $("#dialog").dialog({ 
+                        autoOpen: false,
+
+                        height: 400,
+                        width: 400,
+                        modal: true,
+                        buttons: {
+           "Guardar": function(){
+            var serv = $("input#numservicio");
+            var fech = $("input#fechasys");
+            var usu  = $("input#usu");
+            var obs = $("textarea#obs");
+            
+            vserv = serv[0].value;
+            vfech = fech[0].value;
+            vusu  = usu[0].value;
+            value = obs[0].value;
+            var regex = new RegExp('^[A-Z0-9]$');
+             valid = valid && regex.test(value);
+              
+             if(value != ""){
+
+         $.ajax({ 
+         url: "../back-end/Source/Servicio_Despacho.php", 
+         type: "GET",
+         contentType: "application/json",
+         dataType: 'json',
+         data: {"oper": 16, "serv" : vserv, "fecha" : vfech, "usu" : vusu, "obs" : value, "estado" : valor }, 
+          
+        });
+
+
+         alert("Información de Servicio Actualizada");
+         dialog1.dialog("close");
+         window.close();
+         window.opener.location.reload(false);
+
+       }else{
+
+        alert("La observacion es obligatoria");
+
+       }
+                
+
+              }
+           }
+
+});
+
+// load content and open dialog
+dialog1.dialog('open');
+
+
+
+
+  }
+
+
+}
+
+
+function buscarRepartidor(){
+
+$.ajax({ url: "../back-end/Source/Parametrico.php", 
+      
+         type: "GET",
+         contentType: "application/json",
+         dataType: 'json',
+            data: {"oper":5 },         
+         success: function(json){
+          //alert(json);
+
+          if(json != ""){
+             
+              var $select = $('#num_mobilre'); 
+                               
+                for(var i = 0; json.length; i ++){
+                
+                $select.append('<option value=' + json[i]['n_ide'] + '>' + json[i]['num_mob'] + '</option>');
+            }
+             
+            }
+
+          }
+    
+        });
+        
+         }
+
+ $(document).ready(function(){
+       //buscarRepartidor();
+       obtenerDatos(); 
+     
+    });
+	
+
+   function servicio(){
+
+      try { /* run js code */ 
+
+        
+        $.ajax({ url: "../back-end/Source/Parametrico.php", 
+         type: "GET",
+         contentType: "application/json",
+         dataType: 'json',
+         data: { "oper" : 4 },
+                 
+         success: function(json){ 
+             
+             //console.log(json);
+
+             if(json != ""){
+             
+                var $select = $('#operacion'); 
+                $select.find('option').remove();  
+                
+                for(var i = 0; json.length; i ++){
+                //console.log(json[i]['id_estado_orden'] + ";" +  json[i]['descripcion'] );
+                $select.append('<option value=' + json[i]['id_estado_orden'] + '>' + json[i]['descripcion'] + '</option>');
+            }
+
+}
+
+    }});
+
+         }   catch (error){ /* resolve the issue or bug */ }
+        
+        
+    }
+
+     function buscarNombreRepartidor(idnumb){
+             
+             //var ide_mobil = document.getElementById("num_mobilre").value;
+             $.ajax({ url: "../back-end/Source/Parametrico.php", 
+      
+         type: "GET",
+         contentType: "application/json",
+         dataType: 'json',
+            data: {"oper":6 , "mobil_ide" : idnumb },         
+         success: function(json){
+             
+             //console.log(json);
+             
+              var $select = $('#repartidor'); 
+                $select.find('option').remove();  
+                                
+                $select.append('<option value=' + json['n_ide'] + '>' + json['empnom'] + '</option>');
+            
+    }
+    
+        });
+        
+             
+             
+             
+         }
+
+
+</script>
+
+<body onLoad="javascript:servicio();tipoPago();">
+
+<form id="form" name="form" method="post" action="" class="register" onsubmit="return false">
+
+  <h1>Maestro Domicilio   # <?php echo $_GET['idser'] ?></h1>
+            
+          <fieldset class="row1">
+                <legend>Datos Cliente
+            </legend>
+                
+                <p>
+		<input id="fecha" name="fecha" type="hidden" value="<?php echo date('Y-m-d h:m:s') ?>"  /></p>
+                
+                
+<p>
+                
+                <label>ESTADO
+</label>
+                    
+              <select required id="operacion" name="operacion" onChange="transaccion_operacion(this.value)" >
+
+                  <option value=""> SELECCIONE  </option>
+
+               </select>
+              
+              
+              <label>DOCUMENTO</label>
+		<input id="ide" name="ide" type="text" readonly  />
+        
+     
+		
+<input id="num" name="num" type="hidden" value="<?php echo $_GET['idser'] ?>" readonly  />
+
+   
+           <label>NOMBRE COMPLETO</label>
+		<input id="nomb" name="nomb" type="text"   /> 
+        
+        
+                
+                </p>
+                
+                
+   <p>
+   
+      
+     <label>TELEFONO</label>
+		<input id="tele" name="tele" type="text"   />   
+
+<label>CELULAR</label>
+		<input id="cel" name="cel" type="text"   />
+        
+        
+   
+   </p>   
+        
+                
+  </fieldset>
+                
+                
+<fieldset class="row3" >
+                
+                <legend> Datos Servicio </legend>
+                
+                  <p> 
+                
+                 <label> MOVIL </label>
+
+                 <input type="text" id="num_mobilre"  name="num_mobilre" value="" > </input>
+                
+                
+                
+                <label>TOTAL $</label>
+        <input id="total" name="total" type="text"   />
+        
+        
+     <label>  TIPO PAGO </label>
+               <input id="t_pago"  type="text" ></input>
+                
+    </p>
+                
+  </fieldset>
+                 
+                 
+  <fieldset class="row3"> 
+                 
+                 <legend> Ubicacion </legend>
+                 
+                 <p> 
+                 
+                 <label> DIRECCION ORIGEN </label>
+  <input id="diro" name="diro" type="text"   />
+  
+   <label>DIRECCION DESTINO</label>
+  
+  <input id="dird" name="dird" type="text"   />
+  
+  
+   <label>DIRECCION DESVIO 1</label>
+  
+  <input id="dirdesv1" name="dirdesv1" type="text"   />
+  
+  
+  <label>DIRECCION DESVIO 2</label>
+  
+  <input id="dirdesv2" name="dirdesv2" type="text"   />
+  
+  
+                 
+                 </p>
+                 
+                 
+                 <p>
+                 
+                  <label>DIRECCION DESVIO 3</label>
+  
+  <input id="dirdesv3" name="dirdesv3" type="text"   />
+  
+  <label>DIRECCION DESVIO 4</label>
+  
+  <input id="dirdesv4" name="dirdesv4" type="text"   />
+  
+  
+  <label>DIRECCION DESVIO 5</label>
+  
+  <input id="dirdesv5" name="dirdesv5" type="text"   />
+  
+  
+   <label>DIRECCION DESVIO 6</label>
+  
+  <input id="dirdesv6" name="dirdesv6" type="text"   />
+                 
+    </p>
+                  
+                  
+                  <p>
+                  
+                  <label>DIRECCION DESVIO 7</label>
+    
+    <input id="dirdesv7" name="dirdesv7" type="text"   />
+                  
+                  
+                   <label class="">Observacion *
+    </label>
+    
+    <textarea id="servicio" name="servicio" cols="30" rows="3" style="background:#CCC;text-transform: uppercase" onKeyUp="javascript:this.value=this.value.toUpperCase();" ></textarea>
+                  
+    </p>
+                 
+                 
+                  </fieldset>
+                  
+      <input type="submit" id="save" name="save" value="Aceptar" onClick="proceder()" class="button_registrar" />
+
+      <div id="dialog" style="display:none" title="Evento de Aplicacion">
+
+      <p class="validateTips">Observacion de Servicio</p>
+ 
+  <form id="form_dialog" name="form_dialog" >
+    <fieldset>
+
+    <p>
+      
+        <label for="numservi">Servicio N.</label>
+      <input type="text" name="numservicio" id="numservicio" value="<?php echo $_GET['idser'] ?>" readOnly class="text ui-widget-content ui-corner-all">
+
+
+    </p>
+
+    <p>
+      <label for="fecha">Fecha</label>
+      <input type="text" name="fechasys" id="fechasys" value="<?php echo date('Y-m-d')?>" readOnly class="text ui-widget-content ui-corner-all">
+
+      </p>
+
+      <p>
+      <label for="us">Usuario</label>
+      <input type="text" name="usu" id="usu" readonly value="<?php echo $usuario ?>" class="text ui-widget-content ui-corner-all">
+
+      </p>
+
+      <p>
+      <label for="obs">Observacion</label>
+      <textarea   id="obs" name="obs" cols="30" rows="3" style="background:#999;text-transform: uppercase" onKeyUp="javascript:this.value=this.value.toUpperCase();" required ></textarea>
+
+      </p>
+                
+ 
+      <!-- Allow form submission with keyboard without duplicating the dialog button -->
+      <input type="submit"  style="position:absolute; top:-1000px" value="Aceptar" >
+    </fieldset>
+  </form>
+
+  </div>
+
+
+
+
+</body>
+
+</html>
+
+<?php }else{ header('Location: 404.php');
+    
+      unset($_SESSION['admon_mod']);
+        
+        // DESTROY COOKIE
+        if (isset($_COOKIE['key'])) {
+    unset($_COOKIE['key']);
+    setcookie('key', '', time() - 3600, '/'); // empty value and old timestamp
+        }
+    
+    
+    
+}
+ ?>

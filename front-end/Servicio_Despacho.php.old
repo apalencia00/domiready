@@ -1,0 +1,1210 @@
+<?php
+
+session_start();
+
+if($_SESSION['admon_mod'] != 0 || $_SESSION['admon_mod'] != ""  )  {
+
+  $usuario = $_SESSION['admon_mod'];
+
+  ?>
+
+  <!DOCTYPE html>
+  <html>
+  <head>
+
+
+    <style type="text/css">
+
+      #content {
+       border-radius: 25px;
+       border: 2px solid #73AD21;
+       padding: 20px; 
+       width: 400px;
+       height: 650px;
+       display:none;
+     }
+
+
+     .input_fields_wrap{
+
+      size:200px;
+      height:auto;
+      width:300px;
+      alignment-adjust:auto;
+      white-space:normal;
+      padding:5px;
+      float: left;
+
+    }
+
+
+    form input[type="text"]:required:valid{
+     border:2px solid green;
+     /* otras propiedades */
+   }
+   /*caso contrario, el color sera rojo*/
+   form input[type="text"]:focus:required:invalid{
+     border:2px solid red;
+     /* otras propiedades */
+   }
+
+   a:focus, a:active {
+    color: green;
+  }
+
+  </style>
+<title>SERVICIOS MANDAOS EXPRESS</title>
+
+<link rel="stylesheet" href="css/minified/jquery-ui.min.css" type="text/css" />
+<link rel="stylesheet" type="text/css" href="css/stylodes_ppal.css" />
+<link rel="stylesheet" href="css/minified/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/ajax2.js" ></script>
+<script type="text/javascript" src="js/operServicio.js" ></script>
+<script type="text/javascript" src="js/scripts.js"></script>
+<script type="text/javascript" src="js/setConf.js" ></script>
+<!--<script type="text/javascript" src="../js/peticiones.js" ></script> -->
+
+<script type="text/javascript">
+
+  function imprimir_ireport(ev){
+
+    form=document.getElementById('form');
+
+    form.action='../back-end/Source/imprimir.php?oper=2';
+    form.submit();
+
+    ev.preventDefault();
+
+    return false;
+
+  }
+
+  function historial_By_Criteria(event, v){
+
+    var chCode = ('charCode' in event) ? event.charCode : event.keyCode;
+
+    $.ajax({ url: "../back-end/Source/Servicio_Despacho.php", 
+     type: "GET",
+     contentType: "application/json",
+     dataType: 'json',
+
+     data : { "oper" : 13 ,"valor" : v},
+
+     success: function(json){
+
+       var res = json.success;                     
+
+       if(res){
+        var json_string = JSON.stringify(json.data);
+        var jsonObj = JSON.parse(json_string);
+
+        var html = '<table class="table table-bordered" border="0">';
+                     
+        $.each(jsonObj, function(key, value){
+
+          //console.log(jsonObj);
+          html += '<tr> <td ondblclick="cargarAntiguo('+jsonObj[key].id_servicio+')" width="20%" align="center">' +  jsonObj[key].dir_proc + '</td>' + '<td width="20%" align="center">' +  jsonObj[key].dir_dest + '</td>'  + '<td width="20%" align="center">' +  jsonObj[key].fecha_serv + '</td>' + '<td width="20%" align="center">' +  jsonObj[key].total + '</td>' ;
+          html += '</tr>';
+
+        });
+
+       
+        html += '</table>';
+
+        $('#historico').html(html);
+
+      }    
+    }
+
+  });
+
+  }
+
+  function cargarAntiguo(valor){
+
+
+   document.getElementById("ide").value = "";
+   document.getElementById("nom").value = "";
+   document.getElementById("apell").value = "";
+   document.getElementById("tel").value = "";
+   document.getElementById("cel").value = "";
+   document.getElementById("dirdest").value = "";
+   document.getElementById("dirini").value = "";
+   document.getElementById("nomb_completo").value = "";
+
+   $.ajax({ url: "../back-end/Source/Servicio_Despacho.php", 
+     type: "GET",
+     contentType: "application/json",
+     dataType: 'json',
+
+     data : { "oper" : 14 ,"servicio" : valor},
+
+     success: function(json){
+
+
+
+      document.getElementById("dirini").value = json.data[0].dir_proc;
+      document.getElementById("dirdest").value = json.data[0].dir_dest;
+      document.getElementById("ide").value = json.data[0].n_ide;
+      document.getElementById("nom").value = json.data[0].clinom;
+      document.getElementById("apell").value = json.data[0].cliapell;
+      document.getElementById("valor").value = json.data[0].total;
+      document.getElementById("tel").value = json.data[0].clitel;
+      document.getElementById("cel").value = json.data[0].clicel;
+      document.getElementById("nomb_completo").value = json.data[0].nomb_completo;
+
+    }
+
+  });
+
+ }
+
+ function historial_clienteByIdTel(){
+
+
+   var identificacion  = document.getElementById('ide').value;
+   var telefono        = document.getElementById('tel').value;
+   var nom_completo    = document.getElementById('nomb_completo').value;
+   $.ajax({ url: "../back-end/Source/Servicio_Despacho.php", 
+     type: "GET",
+     contentType: "application/json",
+     dataType: 'json',
+
+     data : { "oper" : 5 ,"ide" : identificacion , "telefono" : telefono, "comp" : nom_completo },
+
+     success: function(json){
+
+       var res = json.success;                     
+
+       if(res){
+        var json_string = JSON.stringify(json.data);
+        var jsonObj = JSON.parse(json_string);
+        var html = '<table class="table table-bordered" border="0">';
+             
+        $.each(jsonObj, function(key, value){
+
+        //console.log(jsonObj);
+        html += '<tr> <td ondblclick="cargarAntiguo('+jsonObj[key].id_servicio+')" width="15%">' +  jsonObj[key].dir_proc + '</td>' + '<td width="15%">' +  jsonObj[key].dir_dest + '</td>' +  '<td width="15%">' +  jsonObj[key].fecha_serv + '</td>' + '<td width="15%">' +  jsonObj[key].total + '</td>' ;
+        html += '</tr>';
+        
+      });
+
+        html += '</table>';
+
+        $('#historico').html(html);
+
+      }    
+    }
+
+  });
+ }
+
+ $(function(){
+
+   $('#cancelar').on('click', function (e) {
+    e.preventDefault();
+
+    $('.dialog').css('display','block');
+    $('#dialog').load('http://198.46.152.223:8080/JasperPrint/webresources/print/imprimir #dialog');
+    $('#myframe').attr('src', 'http://198.46.152.223:8080/JasperPrint/webresources/print/imprimir');
+           
+    
+    var dialog1 = $("#dialog").dialog({ 
+      autoOpen: false,
+
+      height: 600,
+      width: 650,
+      modal: true,
+    });
+
+// load content and open dialog
+dialog1.dialog('open');
+
+});
+
+   $("#nomb_completo").autocomplete({
+    source: "autocomplete.php",
+
+  });
+
+   $("#tel").autocomplete({
+    source: "autocomplete.tel.php",
+    minLength: 1
+  });  
+
+ var max_fields      = 7; //maximum input boxes allowed
+    var wrapper      = $(".input_fields_wrap"); //Fields wrapper
+
+   var x = 0; //initlal text box count
+    $("#add").click(function(e){ //on add input button click
+      e.preventDefault();
+        if(x <= max_fields){ //max input box allowed
+            x++; //text box increment
+            $('#desv'+x).show();
+            $('#altori'+x).show();
+            $('.remove_button').show();
+          }
+        });
+    
+    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+      e.preventDefault(); $(this).parent('div').remove(); x--;
+    });
+
+    osService();
+//servicio();
+//tPago();
+buscarRepartidor();
+comision();
+
+$("#clean")
+.button()
+.click(function () {
+
+ document.getElementById("ide").value = "";
+ document.getElementById("nom").value = "";
+ document.getElementById("apell").value = "";
+ document.getElementById("tel").value = "";
+ document.getElementById("cel").value = "";
+ document.getElementById("dirdest").value = "";
+ document.getElementById("dirini").value = "";
+ document.getElementById("nomb_completo").value = "";
+
+
+});
+
+
+});
+
+
+</script>
+
+
+
+</script>
+
+<SCRIPT language="JavaScript">
+  <!--
+  function silentErrorHandler() {return true;}
+  window.onerror=silentErrorHandler;
+//-->
+</SCRIPT>
+
+<script>
+
+  function osService(){
+
+   $.ajax({ url: "../back-end/Source/Parametrico.php", 
+     type: "GET",
+     contentType: "application/json",
+     dataType: 'json',
+     data: { "oper" : 7 },
+
+     success: function(json){ 
+
+      if(json[0].nservi != null){            
+       var number_servi = parseInt(json[0].nservi);
+
+
+       document.getElementById("idserv").value = json[0].nservi;
+
+     }else{
+      document.getElementById("idserv").value = 0;
+    }
+
+  }
+
+});
+
+ }
+
+
+
+ function servicio(){
+
+  $.ajax({ url: "../Source/Parametrico.php", 
+   type: "GET",
+   contentType: "application/json",
+   dataType: 'json',
+   data: { "oper" : 4 },
+
+   success: function(json){ 
+
+     var $select = $('#operacion'); 
+
+     for(var i = 0; json.length; i ++){
+      $select.append('<option value=' + json[i]['id_estado_orden'] + '>' + json[i]['descripcion'] + '</option>');
+    }
+  }});
+
+}
+
+function tipoServicio(){
+
+ $.ajax({ url: "../Source/Parametrico.php", 
+   type: "GET",
+   contentType: "application/json",
+   dataType: 'json',
+   data: { "oper" : 3 },
+
+   success: function(json){ 
+
+             //console.log(json);
+             
+                //var $select = $('#tipo_serv'); 
+               // $select.find('option').remove();  
+
+               for(var i = 0; json.length; i ++){
+
+                $select.append('<option value=' + json[i]['id_tservicio'] + '>' + json[i]['descripcion'] + '</option>');
+              }
+            }});
+
+}
+
+function tPago(){
+
+ $.ajax({ url: "../back-end/Source/Parametrico.php", 
+   type: "GET",
+   contentType: "application/json",
+   dataType: 'json',
+   data: { "oper" : 2 },
+
+   success: function(json){ 
+
+             //console.log(json);
+             
+             var $select = $('#tipo_pago'); 
+             $select.find('option').remove();  
+
+             for(var i = 0; json.length; i ++){
+
+              $select.append('<option value=' + json[i]['id_tipopago'] + '>' + json[i]['descripcion'] + '</option>');
+            }
+          }});
+
+
+}
+
+function comision(){
+
+ $.ajax({ url: "../back-end/Source/Parametrico.php", 
+   type: "GET",
+   contentType: "application/json",
+   dataType: 'json',
+   data: { "oper" : 1 },
+
+   success: function(json){ 
+
+     var $select = $('#comision'); 
+     $select.find('option').remove();  
+
+     for(var i = 0; json.length; i ++){
+
+      $select.append('<option value=' + json[i]['id_com'] + '>' + json[i]['porcentaje_com'] + '</option>');
+    }
+  }});
+
+
+}
+
+
+function historial(){
+
+  id = document.getElementById("ide").value;
+
+  if(id != ""){
+
+    window.open("HistorialID.php?id="+id, "_blank", "toolbar=yes, scrollbars=no, resizable=yes, top=500, left=500, width=800, height=400");
+
+  }
+}
+
+function busquedaServicio(e)
+{
+
+  var key=e.keyCode || e.which;
+
+  if (e.which == 13) {
+    e.preventDefault();
+    var identii = document.getElementById("idserv").value;
+
+    $.ajax({ url: "../Source/Servicio_Despacho.php", 
+     type: "GET",
+     contentType: "application/json",
+     dataType: 'json',
+     data: { "oper" : 10, "idserr" : identii },
+     
+     success: function(json){ 
+
+      var res    = json.success;
+      var ides   = json.data[0].n_ide;
+      var nombes = json.data[0].clinom;
+      var apelli = json.data[0].cliapell;
+      var diress = json.data[0].dir_proc;
+      var tels   = json.data[0].clitel;
+      var cels   = json.data[0].clicel;
+      var diress2  = json.data[0].dir_dest;
+      var tserx = json.data[0].tser;
+      var comix = json.data[0].comi;
+      var tpagx = json.data[0].tpag;
+      var valore = json.data[0].total;
+
+      console.log(res);
+      console.log(ides);
+      console.log(nombes);
+      console.log(diress);
+      console.log(tels);
+      console.log(diress2);
+      console.log(tserx);
+      console.log(comix);
+      console.log(tpagx);
+      console.log(valore);
+
+      document.getElementById("ide").value = ides;
+      document.getElementById("nom").value = nombes;
+      document.getElementById("apell").value = apelli;
+      document.getElementById("tel").value = tels;
+      document.getElementById("cel").value = cels;
+      document.getElementById("dirdest").value = diress2;
+      document.getElementById("dirini").value = diress;
+
+      document.getElementById("valor").value = valore;
+
+
+
+    }});
+
+  }
+
+}
+
+
+
+function consultarCliente(e)
+
+{
+  var key=document.all ? e.which : e.keyCode;
+
+  if (key == 13) {
+    e.preventDefault();
+    var identi = document.getElementById("ide").value;
+    var telef = document.getElementById("tel").value;
+    var nombress = document.getElementById("nom").value;
+    var celulars = document.getElementById("cel").value;
+    var apellidos = document.getElementById("apell").value;
+    var nomb_completo = document.getElementById("nomb_completo").value;
+
+
+    $.ajax({ url: "../back-end/Source/Parametrico_Cliente.php", 
+     type: "GET",
+     contentType: "application/json",
+     dataType: 'json',
+     data: { "oper" : 2 , "ide" : identi, "tel" : telef, "nom" : nombress, "ape" : apellidos,"cel": celulars, "comp" : nomb_completo },
+     
+     success: function(json){ 
+
+        var resp = json.success;
+
+        if(resp){
+
+
+         if(json.data != "" ){
+
+           historial_clienteByIdTel();
+           var ides   = json.data[0].n_ide;
+           var nombes = json.data[0].clinom;
+           var cliapell = json.data[0].cliapell;
+           var tels   = json.data[0].clitel;
+           var cels   = json.data[0].clicel;
+           document.getElementById("ide").value = ides;
+           document.getElementById("nom").value = nombes;
+           document.getElementById("tel").value = tels;
+           document.getElementById("cel").value = cels;
+           document.getElementById("apell").value = cliapell;
+           document.getElementById("dirini").value = json.data[0].clidire;
+           document.getElementById("comp_dire").value = json.data[0].comp_dire;
+           document.getElementById("nomb_completo").value = json.data[0].nomb_completo;
+
+
+
+         }else{
+          console.log("entro aqui b");
+          confirmado = confirm('El cliente no existe en la base de datos, desea ingresarlo?');
+
+          if(confirmado){
+
+            window.localStorage.setItem("dato", telef);
+
+            window.location = "Cliente.php";
+
+          }
+
+        }
+
+      }
+
+    }});
+
+  }
+  else{
+
+    if(key == 40){
+     document.getElementById("ide").value = "";
+     document.getElementById("nom").value = "";
+     document.getElementById("tel").value = "";
+     document.getElementById("cel").value = "";
+     document.getElementById("apell").value = "";
+     document.getElementById("dirini").value = "";
+     return true;
+
+
+   }
+ }
+
+}
+
+function buscarRepartidor(){
+
+  $.ajax({ url: "../back-end/Source/Parametrico.php", 
+
+   type: "GET",
+   contentType: "application/json",
+   dataType: 'json',
+   data: {"oper":5 },         
+   success: function(json){
+
+    
+     var $select = $('#num_mobilre'); 
+              //  $select.find('option').remove();  
+
+              for(var i = 0; json.length; i ++){
+
+                $select.append('<option value=' + json[i]['n_ide'] + '>' + json[i]['num_mob'] + '</option>');
+              }
+
+            }
+
+          });
+
+}
+
+function buscarNombreRepartidor(idnumb){
+
+             //var ide_mobil = document.getElementById("num_mobilre").value;
+             $.ajax({ url: "../back-end/Source/Parametrico.php", 
+
+               type: "GET",
+               contentType: "application/json",
+               dataType: 'json',
+               data: {"oper":6 , "mobil_ide" : idnumb },         
+               success: function(json){
+
+             //console.log(json);
+             
+             var $select = $('#repartidor'); 
+             $select.find('option').remove();  
+
+             $select.append('<option value=' + json[0]['n_ide'] + '>' + json[0]['empnom'] + '</option>');
+
+           }
+
+         });
+
+             
+             
+             
+           }
+
+           
+
+         </script>
+
+
+
+         <script>
+
+          function setDestino(valor){
+
+            if(valor != ""){
+
+              document.getElementById("dirdest").value = valor;
+              document.getElementById("dirini").value =  "";
+
+            }
+
+          }
+
+
+          function setOrigen(val){
+
+            if(val != ""){
+
+              document.getElementById("dirini").value = val;
+              document.getElementById("dirdest").value =  "";
+
+            }
+          }
+
+          function registrarServicioNorte()
+          {
+
+
+           var   id    = document.getElementById("ide").value;
+           var   tel   = document.getElementById("tel").value;
+           var   cel   = document.getElementById("cel").value;
+           var   nomb  = document.getElementById("nom").value;
+           var  fecha = document.getElementById("fecha").value;
+           var  tipo_serv = document.getElementById("tipo_serv").value;
+           var  idserv= document.getElementById("idserv").value;
+
+           var  tipo_pago = document.getElementById("tipo_pago").value;
+           var  valor = document.getElementById("valor").value;
+           var  comision = document.getElementById("comision").value;
+           var  regresar = document.getElementById("regresar").value;
+           var   repartidor = document.getElementById("repartidor").value;
+           var          observacion = document.getElementById("servicio").value;
+           var  dirini = document.getElementById("dirini").value;
+           var  dirdest = document.getElementById("dirdest").value;
+
+           var  distance = document.getElementById("distance").value;
+           var   time   = document.getElementById("time").value;
+
+           var dir1 = document.getElementById("altori1").value;
+           var dir2 = document.getElementById("altori2").value;
+           var dir3 = document.getElementById("altori3").value;
+           var dir4 = document.getElementById("altori4").value;
+           var dir5 = document.getElementById("altori5").value;
+           var dir6 = document.getElementById("altori6").value;
+           var dir7 = document.getElementById("altori7").value;
+
+
+           if( id !== 0  && fecha !== "" && tel !== "" && regresar !=="" && repartidor !== 0 && nomb !== "" 
+            && dirini!=="" && dirdest !== "" && distance !="" && time !== "" && tipo_serv !== 0 && idserv !== 0 
+            && tipo_pago !== 0 && valor !== "" && comision !== ""  && observacion !== "" ){
+
+            $.ajax({ url: "../back-end/Source/Servicio_Despacho.php", 
+             type: "GET",
+             contentType: "application/json",
+             dataType: 'json',
+             data: {"oper" : 15,"operacionserv" : 5, "ide" : id, "fecha" : fecha, "tel" : tel , "regresar" : regresar, "repartidor" : repartidor, "nomb" : nomb, "dirini" : dirini, "dirdest" :dirdest, "distance" : distance, "dir1": dir1, "dir2": dir2,"dir3": dir3,"dir4": dir4,"dir5": dir5,"dir6": dir6,"dir7": dir7, "time" : time, "tipo_serv" : tipo_serv, "idserv" : idserv, "tipo_pago" : tipo_pago, "valor" : valor, "comision" : comision , "observacion" : observacion   },
+             success: function(json){
+
+               console.log(json);
+               if(json.success){
+
+                 alert(json.mensaje); 
+                 osService(); 
+
+                 setTimeout('document.location.reload()',0);
+                 $('html,body').scrollTop(0);
+
+
+
+
+               }else{
+
+                alert(json.mensaje + "\n" + json.code);
+              }
+
+            }});
+
+        }else{
+          alert("Error al asignar Servicio a Norte, Complete informacion");
+        }
+      }
+
+
+
+
+    </script>
+
+    <script type="text/javascript">
+
+
+
+      function registrarPendiente(){
+
+        var   oper = document.getElementById("operacion").value;
+        var   id    = document.getElementById("ide").value;
+        var   tel   = document.getElementById("tel").value;
+        var   cel   = document.getElementById("cel").value;
+        var   nomb  = document.getElementById("nom").value;
+        var  fecha = document.getElementById("fecha").value;
+        var  tipo_serv = document.getElementById("tipo_serv").value;
+        var  idserv= document.getElementById("idserv").value;
+
+        var  tipo_pago = document.getElementById("tipo_pago").value;
+        var  valor = document.getElementById("valor").value;
+        var  comision = document.getElementById("comision").value;
+        var  regresar = document.getElementById("regresar").value;
+        var   repartidor = document.getElementById("repartidor").value;
+        var          observacion = document.getElementById("servicio").value;
+        var  dirini = document.getElementById("dirini").value;
+        var  dirdest = document.getElementById("dirdest").value;
+
+        var  distance = document.getElementById("distance").value;
+        var   time   = document.getElementById("time").value;
+
+        var dir1 = document.getElementById("altori1").value;
+        var dir2 = document.getElementById("altori2").value;
+        var dir3 = document.getElementById("altori3").value;
+        var dir4 = document.getElementById("altori4").value;
+        var dir5 = document.getElementById("altori5").value;
+        var dir6 = document.getElementById("altori6").value;
+        var dir7 = document.getElementById("altori7").value;
+//
+$.ajax({ url: "../back-end/Source/Servicio_Despacho.php", 
+ type: "GET",
+ contentType: "application/json",
+ dataType: 'json',
+ data: {"oper" : 17, "operacionserv" : oper, "ide" : id, "fecha" : fecha, "tel" : tel , "regresar" : regresar, "repartidor" : repartidor, "nomb" : nomb, "dirini" : dirini, "dirdest" :dirdest, "distance" : distance, "dir1": dir1, "dir2": dir2,"dir3": dir3,"dir4": dir4,"dir5": dir5,"dir6": dir6,"dir7": dir7, "time" : time, "tipo_serv" : tipo_serv, "idserv" : idserv, "tipo_pago" : tipo_pago, "valor" : valor, "comision" : comision , "observacion" : observacion},
+ success: function(json){
+
+   if(json.success){
+//         
+alert(json[0].mensaje);
+//
+location.reload(); 
+//
+//
+//         
+}else{
+//                  
+alert(json[0].mensaje + "\n" + json.code);
+}
+//         
+}
+});
+
+}
+
+
+</script>
+
+</head>
+
+<body >
+
+  <form id="form" name="form" method="post" action="" class="register" onsubmit="return validate_activity(event); return false;" >
+
+
+    <h1>Servicios Express </h1> <div id="content" > </div>
+    <fieldset class="row1">
+      <legend>Datos Personales
+      </legend>
+      <p>
+        <label>Documento/NIT *
+        </label>
+
+        <input type="text" width="50"  id="ide" name="ide" onkeypress="consultarCliente(event)" required />
+
+      </p>
+
+      <p>
+        <label>Telefono *
+        </label>
+
+        <input type="text" style="width:100px"  id="tel" name="tel" onkeypress="consultarCliente(event)" required  />
+        <img src="images/clean.png" name="clean" width="19" height="19" id="clean"  />  
+
+      </p>
+
+      <p>
+
+
+
+
+        <label>Celular</label>
+
+        <input style="width:100px" type="text" id="cel" name="cel" onkeypress="consultarCliente(event)" required   />
+
+
+      </p>
+
+      <p>
+
+
+        <input type="text" id="nomb_completo" name="nomb_completo" style="width:400px" onkeypress="consultarCliente(event)"  />      
+
+      </p>
+
+      <p>
+
+        <label>Nombre(s) *
+        </label>
+        <input type="text" id="nom" name="nom"   style="width:200px" onkeypress="consultarCliente(event)" required />
+
+
+
+      </p>
+
+      <p>
+
+       <label>Contacto(s) *
+       </label>
+       <input type="text" id="apell" name="apell"   style="width:200px" onkeypress="consultarCliente(event)" required />
+
+
+     </p>
+
+   </fieldset>
+
+
+   <fieldset class="row3">
+
+    <legend>
+     Informacion Servicio
+   </legend>
+
+
+
+
+   <p>
+
+
+     <label>
+       Operacion Servicio
+     </label>
+
+     <select id="operacion">
+
+      <option value="1"> DESPACHO </option>
+      <option value="5"> ENVIO NORTE </option>
+
+    </select>
+
+
+
+
+    <input id="fecha" name="fecha" class="" type="hidden" value="<?php echo date('Y-m-d h:m:s');?>" required />          
+  </p>
+
+  <p>
+   <label>Tipo Servicio *
+   </label>
+   <select id="tipo_serv" required> 
+
+    <option value="1" > DOMICILIO </option>
+    <option value="2" > CARGA </option>
+
+
+  </select>
+
+
+
+
+  <label>
+    Servicio *
+
+  </label>
+
+  <input type="text" onkeypress ="busquedaServicio(event)" style="background-color: #faa;" id="idserv" name="idserv" required />
+
+
+
+
+
+</p>
+
+<p>
+
+  <label>Pago *
+  </label>
+
+  <select id="tipo_pago" name="tipo_pago" class="select-style" required>
+
+   <option value="1" selected="selected" > EFECTIVO </option>
+   <option value="2" > CREDITO </option>           
+ </select>
+
+ <label>Regresa *</label>
+ <input id="regresar" name="regresar" type="radio" value="S" required />
+ <label class="gender">Si</label>
+ <input id="regresar" name="regresar" type="radio" value="N" checked/>
+ <label class="gender">No</label>
+
+
+
+</p>
+
+<p>
+
+  <label>Comision *
+  </label>
+
+  <select name="comision" id="comision" class="select-style" required>
+
+  </select>     
+
+  <p>
+
+   <label> Origen * </label>
+
+   <input type="text" id="dirini" name="dirini"  ondblclick="setDestino(this.value)" onKeyPress="historial_By_Criteria(event, this.value)" style="text-transform: uppercase;width:200px" onkeyup="javascript:this.value=this.value.toUpperCase(); " required  />
+
+
+   <select id="ciudad_org" required> 
+
+    <option value="Barranquilla, Colombia" selected > BARRANQUILLA </option>
+
+    <option value="Soledad, Atlántico, Colombia" > SOLEDAD - ATLANTICO </option>
+
+    <option value="Santa Marta, Colombia" > SANTA MARTA </option>
+
+    <option value="Puerto Colombia, Atlántico" > PTO COLOMBIA </option>
+
+
+  </select>
+
+
+</p>
+
+<p>
+  <label>Complemento Origen </label>
+   <input type="text" id="comp_dire" name="comp_dire" style="text-transform: uppercase;width:200px"/>
+
+
+</p>
+
+<p>
+
+  <label> Destino * </label>
+
+  <input type="text" id="dirdest" name="dirdest"   ondblclick="setOrigen(this.value)" onKeyPress="historial_By_Criteria(event, this.value)" style="text-transform: uppercase;width:200px" onkeyup="javascript:this.value=this.value.toUpperCase();" required  />
+
+  <select id="ciudad_dest" required> 
+
+    <option value="Barranquilla, Colombia" selected > BARRANQUILLA </option>
+
+    <option value="Soledad, Atlantico, Colombia" > SOLEDAD - ATLANTICO </option>
+
+    <option value="Santa Marta, Colombia" > SANTA MARTA </option>
+
+
+  </select>
+
+
+  <label>Complemento Destino </label>
+   <input type="text" id="comp_diredest" name="comp_diredest" style="text-transform: uppercase;width:200px"/>
+
+
+</p>
+
+
+  <img src="images/add.png" name="add" width="32" height="29" id="add"  />   
+
+</p>
+
+
+
+
+<div class="input_fields_wrap">
+
+ <p>
+
+   <input type="text" placeholder="Desvio 1" class="input_fields_wrap" id="altori1" name="text" style="width:400px;display:none"  />
+
+
+ </p>
+
+ <p>              
+   <input type="text" placeholder="Desvio 2" class="input_fields_wrap" id="altori2" name="text" style="width:400px;display:none"  /> 
+
+ </p>
+
+ <p>
+  <input type="text" placeholder="Desvio 3" class="input_fields_wrap" id="altori3" name="text" style="width:400px;display:none"  />
+
+</p>
+
+<p>
+
+  <input type="text" placeholder="Desvio 4" class="input_fields_wrap" id="altori4" name="text" style="width:400px;display:none"  />
+</p>
+
+
+<p>             
+  <input type="text" placeholder="Desvio 5" class="input_fields_wrap" id="altori5" name="text" style="width:400px;display:none"  />
+
+</p>
+
+
+<p> 
+
+  <input type="text" placeholder="Desvio 6" class="input_fields_wrap" id="altori6" name="text" style="width:400px;display:none"  />
+
+
+</p>
+
+<p>
+
+
+
+  <input type="text" placeholder="Desvio 7" class="input_fields_wrap" id="altori7" name="text" style="width:400px;display:none"  />
+
+
+</p>
+
+
+</div>
+
+</p>
+<p>
+
+ <label class="">Valor *
+ </label>
+
+ <input type="text" id="valor" name="valor" style="background:#faa" value="" required/>
+ <input type="button" id="search" value="Calcular Distancia" />
+
+
+
+
+</p>
+
+<p>
+
+ <label class="">Observacion *
+ </label>
+
+ <textarea   id="servicio" name="servicio" cols="30" rows="3" style="background:#FFF;text-transform: uppercase" onkeyup="javascript:this.value=this.value.toUpperCase();" required ></textarea>
+
+</p>
+
+<p>
+  <label> Movil * </label>
+
+  <select style="width:auto" id="num_mobilre" name="num_mobilre" class="select-style" onchange="buscarNombreRepartidor(this.value)" required >
+
+   <option value="-1"> SELECCIONE </option> 
+
+ </select>
+
+</p>
+
+<p>
+  <label> Nombre * </label>
+  <select style="width:200px" id="repartidor"> </select>
+
+
+</p>
+
+
+
+
+</fieldset>
+
+
+<fieldset class="row4">
+
+ <legend> 
+
+   Ubicacion
+
+ </legend>
+
+ <div id="map" style="width:300px; height:250px; margin:rigth" > </div>
+
+ <p>
+  <label> Distancia (km)  </label>
+
+  <input type="text" id="distance" name="distance" />
+</p>
+
+<p>
+  <label> Tiempo  </label>
+
+  <input type="text" id="time" name="time" />
+</p>
+
+
+
+</fieldset>
+
+<fieldset class="row5">
+
+  <legend> 
+
+   Historial
+
+ </legend>
+
+ <table class="table table-bordered" width="400" id="tableid">
+  <tr>
+   
+   <td width="20%">RECOGIDA</td>
+   <td width="20%">ENTREGA</td>
+   <td width="20%">FECHA</td>
+   <td width="20%">VALOR</td>
+
+ </tr>
+ <tr>
+   <td colspan="4"><div id="historico" style="width: 100%; height: 100px; overflow-y: scroll;" > </div></td>
+ </tr>
+</table>
+</fieldset>
+
+<!-- BOTON ACEPTAR -->
+<div class="row">
+ <div class="col-md-10 col-sm-2 col-xs-5">
+
+<button type="submit" id="registro" name="registro" class="btn btn-info btn-lg">
+    <span class=""></span> Aceptar
+  </button>
+  
+   <button id="pendiente" name="pendiente" onclick="registrarPendiente()" type="button" class="btn btn-search btn-lg">
+    <span class=""></span> Pendiente
+  </button>
+  
+   <button id="registron" name="registron" onclick="registrarServicioNorte()" type="button" class="btn btn-info btn-lg">
+    <span class=""></span> Norte
+  </button>
+  
+  <button id="cancelar" name="cancelar" class="btn btn-success btn-lg" type="button" >  
+    <span class="glyphicon glyphicon-print"></span> Print
+  </button>
+
+ </div>
+
+  </div> 
+
+<!-- BOTON PENDIENTE -->
+
+
+
+
+
+
+
+</form>
+
+<div id="dialog"  style="display:none" title="Impresion">
+<iframe id="myframe" src="" width="100%" height="100%">
+  
+</iframe>
+ </div>
+
+</body>
+</html>
+
+<?php }else{ header('Location: 404.php');
+
+  unset($_SESSION['admon_mod']);
+
+        // DESTROY COOKIE
+  if (isset($_COOKIE['key'])) {
+    unset($_COOKIE['key']);
+    setcookie('key', '', time() - 3600, '/'); // empty value and old timestamp
+  }
+
+
+
+}
+?>
+
+

@@ -1,0 +1,13 @@
+body {font-family: 'Roboto', sans-serif; 
+background-image:url(images/cloth_alike.png); 
+background-color: #999; 
+height: 20px; 
+margin: 0; 
+padding: 0; 
+font-size: 62.5%} 
+
+.enviado {width:70%; 
+height: 100px; 
+float:center; 
+background-color:#90EE90; 
+border: 1px solid #063;}

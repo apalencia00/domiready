@@ -1,0 +1,119 @@
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+$.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyDAk7Iej8_ptIbgs9R3VXzNomgdX8T0bCs&libraries=geometry&language=es&libraries=places&callback=load_map", function () {});
+	
+ var map = null;
+	var marker = null;
+    var _address = [];
+
+
+   var directionsService ;
+   var directionsDisplay ;
+ 
+function load_map() {
+
+        var myLatlng = new google.maps.LatLng(10.9873307, -74.8043412);
+    var myOptions = {
+        zoom: 10,
+        center: myLatlng
+
+    };
+    map = new google.maps.Map($("#map").get(0), myOptions);
+  directionsService = new google.maps.DirectionsService();
+  directionsDisplay = new google.maps.DirectionsRenderer();
+        directionsDisplay.setMap(map);
+	
+}
+
+$(function() {
+      $("#search").click( function()
+           {
+             calcularDistanciaYPintar(directionsService,directionsDisplay);
+              calcularValor();
+           }
+      );
+});
+ 
+
+
+  function calcularDistanciaYPintar(directionsService, directionsDisplay) {
+	        
+	      var origen      = document.getElementById('dirini').value;
+        var destination   = document.getElementById('dirdest').value;
+		
+		var location_city_source  = document.getElementById('ciudad_org').value;
+        var location_city_destiny = document.getElementById('ciudad_dest').value;
+        //console.log(origen);
+        
+          var dir_ini = origen;
+	      var dir_des = destination;
+                
+    directionsService.route({
+    origin:      dir_ini + location_city_source,
+    destination: dir_des + location_city_destiny,
+    waypoints : [],
+    region: "CO",
+    travelMode: google.maps.TravelMode.DRIVING
+    },
+   function(response, status) {
+    if (status === google.maps.DirectionsStatus.OK) {
+      directionsDisplay.setDirections(response);
+       
+      var route = response.routes[0];
+      console.log(route);
+
+     var distancia = 0;
+      for (var i = 0; i < route.legs.length; i++) {
+          document.getElementById('distance').value = response.routes[0].legs[0].distance.text;      
+             document.getElementById("time").value = response.routes[0].legs[0].duration.text;
+          
+            }
+            
+           
+             
+
+    } else {
+      window.alert('No se pudo procesar la solicitud, asegure tener conexion a Internet ' + status);
+    }
+  });
+  
+  
+}
+
+function calcularValor(){
+    
+    
+var kilometroj = $('#distance').val();
+var val ;
+var total;
+var kmentero;
+var constante = 1667;
+        
+         kilometroj = kilometroj.replace('km','');
+         //kilometroj = kilometroj.replace('m','');
+          //alert("El valor es "+val);
+          kilometroj = kilometroj.replace(',', '.');
+		  
+		  if(kilometroj <= 1){
+
+			   document.getElementById("valor").value = parseFloat(5000);
+		  }else{
+           
+         var p = parseFloat(Math.round(kilometroj * 100) / 100).toFixed(0);
+          //alert(p);
+        total = p * constante;
+          
+        document.getElementById("valor").value = total;
+		
+		  }
+    
+}
+
+
+
+	
+

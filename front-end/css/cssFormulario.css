@@ -1,0 +1,313 @@
+
+root { 
+    display: block;
+}
+
+body
+{
+    background-image: url();
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ebebeb;
+    font-family: sans-serif;
+    font-size: small;
+    color: #000000;
+}
+
+ .first-row {
+                 background-color: #ffffff !important;
+                 background-image: none !important;
+                 color: #000000 !important;
+            }
+
+.second-row {
+    background-color: #00ff00 !important;
+    background-image: none !important;
+    color: #000000 !important;
+}
+
+a {
+    color: #e33b06;
+}
+
+form.jsfcrud_list_form th, td th {
+    font-size: x-small;
+    color: #000000;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-color: #b2d5d6;
+    border-bottom-color: #b2d5d6;
+    border-left-color: #90b4bd;
+    border-right-color: #90b4bd;
+    letter-spacing: 3px;
+    text-align: left;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 6px;
+    padding-right: 6px;
+    background-color: #b2d5d6;
+}
+
+td {
+    vertical-align: top;
+    padding-bottom: 8px;
+    font-size: small;
+}
+
+form.jsfcrud_list_form td, td td {
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-color: #b2d5d6;
+    border-bottom-color: #b2d5d6;
+    border-left-color: #b2d5d6;
+    border-right-color: #b2d5d6;
+    vertical-align: baseline;
+    padding-bottom: 0px;
+}
+
+tr.jsfcrud_odd_row {
+    background-color: #fefeff;
+    color: #4e6a71;
+}
+
+
+tr.jsfcrud_even_row {
+    background-color: #eff5fa;
+    color: #4e6a71;
+}
+
+#busyImage {
+    position: relative;
+    left: 50%;
+    top: 50%;
+}
+
+table {
+    empty-cells: show;
+}
+
+.colored {
+background-color: #FF0000;
+color: #FFFFFF;
+}
+  
+.contenedorLogin
+{
+    margin-top: 100px;
+    text-align:center; 
+	
+    width: 100%;
+	
+}
+
+.ui-top, .ui-top .ui-layout, .ui-top .ui-layout-bd, .ui-top .ui-layout-unit {
+    background-image: none;
+    background-color: #8BB9C7; }
+
+.formulario2{
+   background-color: #D4DEDF;
+    border-radius: 7px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4), 0px 0px 4px white inset, 2px 2px 2px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+    vertical-align: middle;
+    width: auto;
+    color: black;
+
+}
+
+.formulario
+{
+    background-color: #F3F3F3;
+    border-radius: 7px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4), 0px 0px 4px white inset, 2px 2px 2px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+    vertical-align: middle;
+    width: 270px;
+    -webkit-animation: entrada 1s;
+    -moz-animation: entrada 1s;
+    -ms-animation: entrada 1s;
+    -o-animation: entrada 1s;
+    animation: entrada 1s;
+}
+  
+.formulario a
+{
+    color: #7C96B7;
+}
+  
+.formulario h2
+{
+    color: #414848;
+}
+  
+.formulario input[type=submit]
+{
+    background-color: #409FBA;
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4), 0px 0px 2px white inset;
+    color: white;
+    font-size: 17px;
+    height: 40px;
+    margin: 40px; 
+    min-width: 100px;
+    -webkit-transition: background-color 0.2s;
+    -moz-transition: background-color 0.2s;
+    -ms-transition: background-color 0.2s;
+    -o-transition: background-color 0.2s;
+    transition: background-color 0.2s;
+}
+  
+.formulario input[type=submit]:hover
+{
+    background-color: #D84530;
+    cursor: pointer;
+}
+  
+.formulario input[type=submit]:focus
+{
+    outline: none;
+}
+  
+.formulario input[type=text], .formulario input[type=password]
+{
+    border: none;
+    border-radius: 4px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2) inset, -1px -1px 1px rgba(0, 0, 0, 0.1) inset, 0px 0px 2px white;
+    height: 30px;
+    margin: 0px;
+    min-width: 240px;
+    padding: 5px;
+}
+  
+.formulario input[type=text]:focus, .formulario input[type=password]:focus
+{
+    outline: none;
+}
+  
+.formulario input[type=text]:hover, .formulario input[type=password]:hover
+{
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2) inset, -1px -1px 1px rgba(0, 0, 0, 0.1) inset, 0px 0px 2px white, 0px 0px 2px rgba(0, 0, 0, 0.2);
+}
+  
+.formulario p
+{
+    color: #7C96B7;
+}
+  
+.seccionBotones
+{
+    background-color: #D4DEDF;
+    border-radius: 0px 0px 7px 7px;
+    box-shadow: 0px 0px 2px white, 0px 2px 2px rgba(0, 0, 0, 0.2), 0px 0px 2px white inset;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    text-align: right;
+    color:black;
+    
+}
+  
+@-webkit-keyframes entrada
+{
+    0%
+    {
+        margin-top: -1000px;
+        -webkit-transform: rotate(360deg);
+    }
+    75%
+    {
+        margin: 30px auto;
+    }
+    100%
+    {
+        margin: 0px auto;
+        -webkit-transform: rotate(0deg);
+    }
+}
+  
+@-moz-keyframes entrada
+{
+    0%
+    {
+        margin-top: -1000px;
+        -moz-transform: rotate(360deg);
+    }
+    75%
+    {
+        margin: 30px auto;
+    }
+    100%
+    {
+        margin: 0px auto;
+        -moz-transform: rotate(0deg);
+    }
+}
+  
+@-ms-keyframes entrada
+{
+    0%
+    {
+        margin-top: -1000px;
+        -ms-transform: rotate(360deg);
+    }
+    75%
+    {
+        margin: 30px auto;
+    }
+    100%
+    {
+        margin: 0px auto;
+        -ms-transform: rotate(0deg);
+    }
+}
+  
+@-o-keyframes entrada
+{
+    0%
+    {
+        margin-top: -1000px;
+        -o-transform: rotate(360deg);
+    }
+    75%
+    {
+        margin: 30px auto;
+    }
+    100%
+    {
+        margin: 0px auto;
+        -o-transform: rotate(0deg);
+    }
+}
+  
+@keyframes entrada
+{
+    0%
+    {
+        margin-top: -1000px;
+        transform: rotate(360deg);
+    }
+    75%
+    {
+        margin: 30px auto;
+    }
+    100%
+    {
+        margin: 0px auto;
+        transform: rotate(0deg);
+    }
+}

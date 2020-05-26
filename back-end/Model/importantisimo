@@ -1,0 +1,82 @@
+
+PYP
+
+Clasificacion publico y particular 
+
+Solucion por ahora hace la lectura del LPR y se esta sancando el color 
+
+Datos de ayer
+
+de la camara 100 se tiene 77 infractores validados 
+
+101 -> 57 nifractores
+
+102 -> 0 infractores -- > cuestiones no tecnicas 
+
+103 -> 32 infractores
+
+Falta implementar dos jeugos de reglas -> horarios para particular
+
+Definir reglas para servicio publico 
+
+Filtro tecnosystems -> clase de vehiculo -> lista blanca
+
+
+- Para pico y placa los que tengan la placa mala se mete en un paso diferente y procesamiento reprocesara. Para corregir placas se valida por fecha y hora validar que sean de pico y placa.
+
+COmpromiso tecnosystems-- las infracciones lleguen al paso de capturar placas 
+
+Omitir las placas con caracteres menores a 6 caracteres. -- que no tengan los 3 numeros
+
+
+-- Bloqueo de Interseccion
+
+Problermas.
+
+Falsos positivos
+
+50% de falsos positivos por interrupcion de objeticos en movimiento. ??
+
+
+
+Calidad de la evidencia 
+
+Se requiere mas hardware para deteccion. Se agrego una segunda caramara en el mismo sutio pero con mas alta calidad. Cuando se depure y se monte el sofware en la camara estará en productivo.
+
+
+
+esquema de trabajo
+
+Edgar enviara relacion de videos con errores y archivos con errores para sistra hacer correcion. 
+
+Formalizar estandar de los archivos.
+
+
+Analizar sincronizacion con la cuenta cuenta amazon 
+
+Se implementara web service pr parte de tecnosystems y sistra para consumir y consumir servicios
+
+No se puede estandarizar videos por el peso.
+
+
+Sugerencia para mal parqueo
+
+Se agregara un putero o señal para señalar la placa de la que se este mal parqueoado.
+
+Se estudiara la viabilidad de escribir la placa automaticamente.
+
+
+
+Por parte de procesamiento armar lista blanca 
+
+para los que son busetas o publicos dependiendo del tipo de la que se alimenta a sistra y la camara la omita.
+
+Por parte de Marcos se dara una lista de buses de servicio publico para que sistra las agregue en las camaras.
+
+
+Procesar evdencias para determinar infracciones 
+
+3004520040 Carlos Martinez
+
+
+
