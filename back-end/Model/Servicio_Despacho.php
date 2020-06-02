@@ -1,7 +1,7 @@
 <?php
 
 
-require '../ConexionBD/Conexion.php';
+require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/back-end/ConexionBD/Conexion.php');
 
 class Servicio_Despacho {
     
