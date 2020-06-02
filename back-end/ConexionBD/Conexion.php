@@ -4,16 +4,16 @@
    session_start();
    session_id();
 
-   error_reporting(E_ALL);
+   error_reporting(0);
 
 class Conexion {
 
     var $db, $connection;
     
-    private $server = "http://ec2-18-191-168-53.us-east-2.compute.amazonaws.com/" ;
-    private $database = "domiready_db" ;
-    private  $username = "domiready_u" ;
-    private  $password = "/*-domiready_pw";
+    private $server     = "18.191.168.53" ;
+    private $database   = "domiready_db" ;
+    private  $username  = "domiready_u" ;
+    private  $password  = "/*-domiready_pw";
     
     private $link ;
 
