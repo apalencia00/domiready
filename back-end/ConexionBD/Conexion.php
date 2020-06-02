@@ -22,12 +22,13 @@ class Conexion {
     
     $user = $_REQUEST['un'];
     $pass = $_REQUEST['pw'];
-}else{
+
+      }else{
 
     $user = "domiready_u";
     $pass = "/*-domiready_pw";
     
-}
+      }
         
         
         $stringConnection="host=".$this->server." dbname=".$this->database." user=".$user." password=".$pass;
@@ -194,7 +195,7 @@ class Conexion {
               $i++;
             }
 
-           
+           #var_dump($array);
 
         return $array; 
   }

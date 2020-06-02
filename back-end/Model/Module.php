@@ -21,6 +21,8 @@ class Modulo {
 
      return $result;
 
+     var_dump($result);
+
      pg_close($conn);
 
     }

@@ -3,9 +3,9 @@
 
 
 
-error_reporting(0);
-
 require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/back-end/ConexionBD/Conexion.php');
+
+require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/back-end/Model/Module.php'); 
 
 
 session_start(); 
@@ -260,16 +260,32 @@ color: #fff;
 
 
     </style>
-<!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
- -->
+
+ <script>
+
+$(document).ready(function(){
+
+  console.log("entrao aqui");
+
+  callPaget('<?php echo "Ecomerce_cliente.php" ?>');
+
+  $("#content").load("./Ecomerce_cliente.php");
+
+
+});
+
+
+ </script>
 
   <script type="text/javascript">
+
+
     
     function callPaget(page){
 
         if(page != ""){
             
-            $("#content").load(page);
+            $("#content").load("Ecomerce_cliente.php");
         }
     }
 
@@ -311,7 +327,8 @@ color: #fff;
   </script>
 
 </head>
-<body onload="javascript:callPaget('<?php echo "Ecomerce_cliente.php" ?>')" >
+
+<body>
 
         <div class="container-fluid"> <br>
 
@@ -324,11 +341,11 @@ color: #fff;
 
 
                                         <?php
-
+                                                 
                                                 $mod = new Modulo();
 
-                                                foreach ($mod->getModule() as $v) {  ?>
-
+                                                foreach ($mod->getModule() as $v) {   ?>
+                                                        
                                                       <li class="nav-item dropdown">
 
                                                             <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown" href="<?php echo $v['ID_MODULE'] ?>"> <?php echo $v['MODULOS'] ?> <span class="caret"></span></a>
