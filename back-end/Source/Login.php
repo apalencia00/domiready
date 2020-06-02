@@ -29,7 +29,6 @@ $result    = $conn->executePL('autentication.validar_login' , $arrayName);
 }
     //echo $result;
 
-    curl_close($curl);
 
     pg_close($conn);
 
