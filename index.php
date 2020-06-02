@@ -39,8 +39,8 @@
 
           <fieldset class="clearfix">
 
-            <p ><span class="fa fa-user"></span><input type="text" id="login_username" Placeholder="Username" required></p> <!-- JS because of IE support; better: placeholder="Username" -->
-            <p><span class="fa fa-lock"></span><input type="password" id="login_password"  Placeholder="Password" required></p> <!-- JS because of IE support; better: placeholder="Password" -->
+            <p ><span class="fa fa-user"></span><input type="text" value="domiready_db" id="login_username" Placeholder="Username" required></p> <!-- JS because of IE support; better: placeholder="Username" -->
+            <p><span class="fa fa-lock"></span><input type="password" value="/*-domiready_pw" id="login_password"  Placeholder="Password" required></p> <!-- JS because of IE support; better: placeholder="Password" -->
             
              <div>
                                 <span style="width:48%; text-align:left; color:#fff;  display: inline-block;"><a class="small-text; color:#fff" href="#"> Olvido Clave ?</a></span>
