@@ -3,6 +3,17 @@
 
 error_reporting(0);
 
+$server     = "18.191.168.53" ;
+ $database   = "domiready_db" ;
+  $username  = "domiready_u" ;
+  $password  = "/*-domiready_pw";
+
+$stringConnection="host=".$server." dbname=".$database." user=".$username." password=".$password;
+pg_connect($stringConnection)
+or die('No es posible la conexion: ' . pg_last_error());
+
+echo "Si conecto a postres";
+
 require_once '../back-end/Model/Module.php';
 
 session_start(); 

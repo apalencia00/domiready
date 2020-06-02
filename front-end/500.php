@@ -47,6 +47,7 @@ body{
 	font-size:13px;
 	font-family: arial, serif;
 	font-weight:bold;
+	border-radius: .5em;
 	-webkit-border-radius:.5em;
 	-moz-border-radius:.5em;
 	-border-radius:.5em;
