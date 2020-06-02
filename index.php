@@ -2,6 +2,8 @@
 
 #phpinfo();
 
+echo $_SERVER["DOCUMENT_ROOT"];
+
  $server     = "18.191.168.53" ;
  $database   = "domiready_db" ;
   $username  = "domiready_u" ;
