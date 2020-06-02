@@ -246,28 +246,74 @@ var key=document.all ? e.which : e.keyCode;
 
    <div class="col">
 
-       <label for="username">Telefono</label> 
+       <label for="username">Antiguedad</label> 
 
-        <input class="form-control" type="text" name="telcliente" id="telcliente" onkeypress="buscarCliente(event)"/>
+        <select class="form-control" >
+
+            <option value="0" >Seleccione</option>
+            <option value="1-3" >De 1 a 3 Meses</option>
+            <option value="3-6" >De 3 a 6 Meses</option>
+            <option value="6-1y" >De 6 Meses  a 1 Año</option>
+            <option value="1y-more" >1 Año o Mas</option>
+
+        </select>
 
    </div>
 
    <div class="col" >
 
-     <label for="username">Nombre Cliente</label> 
+     <label for="username">Tipo de Servicio Solicitado</label> 
 
-     <input class="form-control" type="text" name="nomcliente" id="nomcliente" onkeypress="buscarCliente(event)"/>
+        <select class="form-control" >
+
+            <option value="0" >Seleccione</option>
+            <option value="1-3" >Servicio de Mensajeria</option>
+            <option value="3-6" >Servicio Corporativo</option>
+            <option value="6-1y" >Cotizaciones</option>
+            
+
+       </select>
 
    </div>
+
+   <div class="col" >
+
+<label for="username">Cantidad de Servicios</label> 
+
+    <select class="form-control" >
+
+        <option value="0" >Seleccione</option>
+        <option value="1" >1 Servicio</option>
+        <option value="2" >2 Servicios</option>
+        <option value="3" >3 Servicios</option>
+        <option value="4" >4 Servicios</option>
+        <option value="5" >5 Servicios</option>
+
+    </select>
+
+</div>
 
 
  </div>
 
+
+
+
 </div>
 
- <div class="">
+</div>
 
- <table class="table table-striped" id="tableID" width="80%" height="70%" align="center" >
+<div class="card">
+  <div class="card-header">
+    Prospectar Clientes
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Aplica para clientes no concurrentes o que se perdieron</h5>
+
+
+            
+            <table class="table table-striped" id="tableID" width="80%" height="70%" align="center" >
+
                   <thead>
                     <tr>
                       <td width="10%" >ID</td>
@@ -284,99 +330,20 @@ var key=document.all ? e.which : e.keyCode;
                     </thead>
 
                     <tbody id="tbody">
-                    <tr>
-                      <td colspan="13">
-          <div id="act_table" style="width: 100%; height: 200px; overflow-y: scroll;" > </div></td>
-                    </tr>
+                        <tr>
+                            <td colspan="13">
+                                <div id="act_table" style="width: 100%; height: 200px; overflow-y: scroll;" > </div>
+                            </td>
+                        </tr>
 
                     </tbody>
-                  </table>
 
+            </table>
 
-
-                </div>
-
-
-
-            </fieldset>
-
-
-             <div id="dialog" style="display:none" title="Evento de Aplicacion">
-
-      <p class="validateTips">Datos Cliente</p>
- 
-  <form id="form_dialog" name="form_dialog" >
-    <fieldset>
-
-     <p>
-      
-        <label for="numservi">Identificacion</label>
-      <input type="text" name="ident" id="ident" class="text ui-widget-content ui-corner-all" readonly="" >
-
-
-    </p>
-
-
-    <p>
-      
-        <label for="numservi">Nombre</label>
-      <input type="text" name="nombre" id="nombre" class="text ui-widget-content ui-corner-all">
-
-
-    </p>
-
-    <p>
-      <label for="fecha">Contacto</label>
-      <input type="text" name="apellido" id="apellido"   class="text ui-widget-content ui-corner-all">
-
-      </p>
-
-      <p>
-      <label for="us">Direccion</label>
-      <input type="text" name="direccion" id="direccion"  class="text ui-widget-content ui-corner-all">
-
-      </p>
-
-	<p>
-      <label for="us">Complemento Direccion</label>
-      <input type="text" name="compdireccion" id="compdireccion"  class="text ui-widget-content ui-corner-all">
-
-      </p>
-
-      <p>
-      <label for="obs">Telefono</label>
-      <input type="text" id="telefono" name="telefono" class="text ui-widget-content ui-corner-all" ></input >
-
-      </p>
-
-<p>
-      <label for="obs">Otro Telefono</label>
-      <input type="text" id="otrotelefono" name="otrotelefono" class="text ui-widget-content ui-corner-all" ></input >
-
-      </p>
-
-      <p>
-
-      <label for="obs">Email</label>
-      <input type="text" id="email" name="email" class="text ui-widget-content ui-corner-all" ></input >
-
-
-      </p>               
- 
-      <!-- Allow form submission with keyboard without duplicating the dialog button -->
-      <input type="text" type="submit"  style="position:absolute; top:-1000px" value="Aceptar" >
-    </fieldset>
-  </form>
 
   </div>
-
-
-
-
-
-</form>
-
 </div>
+ 
 
 </body>
 </html>

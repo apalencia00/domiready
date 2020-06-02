@@ -17,8 +17,6 @@ $arrayName = array('usuanom' => $usuario , 'contrasenna' => $contrasena );
 
 $result    = $conn->executePL('autentication.validar_login' , $arrayName);
 
-
-
     if($result != null){
         
         $_SESSION["admon_mod"] = $result;

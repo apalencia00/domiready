@@ -5,18 +5,85 @@
 <head>
   <title>SERVICIOS EXPRESS</title>
  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/minified/jquery-ui.min.css" type="text/css" />
-  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+ 
+ <style>
 
-  <style type="text/css">
+/*
+*
+* ==========================================
+* FOR DEMO PURPOSES
+* ==========================================
+*
+*/
 
-    @media screen and (min-width: 768px) {
+body {
+background: #EEE9E8;
+}
 
-      #myModal .modal-dialog  {width:800px;}
+.rounded-lg {
+border-radius: 1rem;
+}
 
+.nav-pills .nav-link {
+color: #555;
+}
+
+.nav-pills .nav-link.active {
+color: #fff;
+}
+
+
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 1500px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
     }
 
-  </style>
+    .card{
+      width: 80%;
+      position: absolute;
+      left: 170px;
+    }
+
+
+</style>
+    <!-- Custom styles for this template -->
+
+    <link href="../vendor/twitter/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" >
 
   <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
   <script type="text/javascript" src="js/jquery-ui.min.js"></script>
@@ -382,90 +449,91 @@ function localizarMovilSucursal(suc)
 
 <body >
 
-  <div id="wrapper">
-
     <form id="form" name="form" method="post" action="">
 
-      <legend>
-        CRITERIO DE BUSQUEDA
-      </legend>
+          <div class="form-group">
 
-      <fieldset >
+                       <div class="input-group">
 
-        <label>
+                          <div class="col">
 
-          TIPO EMPLEADO
+                              <label for="username">Tipo Empleado</label> 
 
-        </label>
+                                <select class="form-control" id="tipoemp" onchange="tipoEmpleo(this.value);" >
 
-        <select id="tipoemp" onchange="tipoEmpleo(this.value);" >
+                                      <option value="S" > SELECCIONE </option>
+                                      <option value="O" > OFICINA </option>
+                                      <option value="R" > REPARTIDOR </option>
 
-          <option value="S" > SELECCIONE </option>
-          <option value="O" > OFICINA </option>
-          <option value="R" > REPARTIDOR </option>
+                                </select>
 
-        </select>
+                          </div>
 
+                          <div class="col" >
 
-        <label>
+                            <label for="username">Sucursal - Oficina</label> 
 
-         MOBIL
-       </label>
+                           <select class="form-control" id="sucursal" onchange="localizarMovilSucursal(this.value);" >
 
-       <select id="sucursal" onchange="localizarMovilSucursal(this.value);" >
+                                <option value="P" > SELECCIONE </option>
+                                <option value="C" > CENTRO </option>
+                                <option value="N" > NORTE </option>
+                                <option value="CN" > CENTRO-NORTE </option>
 
-        <option value="P" > SELECCIONE </option>
-        <option value="C" > CENTRO </option>
-        <option value="N" > NORTE </option>
-        <option value="CN" > CENTRO-NORTE </option>
-
-      </select>
-
-      <select id="num_mobilre" name="num_mobilre" class="select-style" onChange="localizarInfoEmpleado(this.value)" >
-
-        <option value="invalid" >SELECCIONE</option>
-
-      </select>
+                           </select>
 
 
+                          </div>
 
+                          <div class="col">
 
-    </fieldset>
+                                <label for="username">Numero de Movil</label>
 
-    <fieldset>
+                                <select class="form-control" id="num_mobilre" name="num_mobilre" class="select-style" onChange="localizarInfoEmpleado(this.value)" >
 
-     <div class="">
+                                    <option value="invalid" >SELECCIONE</option>
+
+                                </select>
+
+                          </div>
+
+                        </div>
+
+               </div>
+
+  
+  
+     <div class="row">
 
        <table class="table table-striped" id="tableID" width="80%" height="70%" align="center" >
-        <thead>
-          <tr>
-            <td width="10%" >ID</td>
-            <td width="10%" >IDENTIFICACION</td>
-            <td width="10%" >NOMBRE</td>
-            <td width="10%" >APELLIDO</td>
-            <td width="10%" >DIRECION</td>
-            <td width="10%" >TELEFONO</td>
-            <td width="10%" >MOBIL</td>
-            <td width="10%" >ESTADO</td>
-            <td width="10%" >SUCURSAL</td>
+         
+                <thead>
+          
+                  <th width="10%" >ID</th>
+                  <th width="10%" >IDENTIFICACION</th>
+                  <th width="10%" >NOMBRE</th>
+                  <th width="10%" >APELLIDO</th>
+                  <th width="10%" >DIRECION</th>
+                  <th width="10%" >TELEFONO</th>
+                  <th width="10%" >MOBIL</th>
+                  <th width="10%" >ESTADO</th>
+                  <th width="10%" >SUCURSAL</th>
             
-          </tr>
+               </thead>
 
-        </thead>
+                <tbody id="tbody">
+                <tr>
+                      <td colspan="13">
+          <div id="act_table" style="width: 100%; height: 200px; overflow-y: scroll;" > </div></td>
+                    
+            
 
-        <tbody id="tbody">
-          <tr>
-            <td colspan="9">
-              <div id="act_table" style="width: 1000px; height: 200px; overflow-y: scroll;" > </div></td>
-            </tr>
+                </tbody>
 
-          </tbody>
         </table>
 
       </div>
 
-
-    </fieldset>
 
 
 <div id="myModal" class="modal fade" role="dialog">
@@ -490,7 +558,7 @@ function localizarMovilSucursal(suc)
                   </label>
                   <div class="col-sm-8">
 
-                  <input  type="text" name="nombre" id="nombre" class="form-control col-lg-100"/>
+                  <input class="form-control"  type="text" name="nombre" id="nombre" class="form-control col-lg-100"/>
                   </div>
 
                 </div>
@@ -501,7 +569,7 @@ function localizarMovilSucursal(suc)
                   </label>
                   <div class="col-sm-8">
 
-                    <input type="text" name="apellido" id="apellido"   class="form-control col-lg-100">
+                    <input class="form-control" type="text" name="apellido" id="apellido"   class="form-control col-lg-100">
 
                   </div>
 
@@ -586,7 +654,7 @@ function localizarMovilSucursal(suc)
 
                   <br>
 
-<button type="button" id="save" onclick="editar()" class="btn btn-primary btn-block">Aceptar</button>
+                  <button type="button" id="save" onclick="editar()" class="btn btn-primary btn-block">Aceptar</button>
 
                 
 

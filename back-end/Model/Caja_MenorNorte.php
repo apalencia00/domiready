@@ -88,7 +88,7 @@ class Caja_MenorNorte {
 
         $conn->conectar();
 
-     $result    = $conn->query('SELECT * FROM service."CONCEPTO_CAJA" WHERE id_concepto_caja not in (0,11,200,99) ORDER BY 1');
+     $result    = $conn->query("SELECT * FROM service.\"CONCEPTO_CAJA\" WHERE id_concepto_caja not in (0,11,200) AND WHERE estado = 'A' ORDER BY 1");
 
      return $result;
 

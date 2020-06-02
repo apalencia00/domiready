@@ -14,114 +14,84 @@ $modulo = $_SESSION['admon_mod'];
 
 <head>
 
-<meta charset="UTF-8">
+<style>
 
+/*
+*
+* ==========================================
+* FOR DEMO PURPOSES
+* ==========================================
+*
+*/
 
-<title>:: YOUCODE</title>
-
-<style type="text/css">
-
-
-form input[type="text"]:required:valid{
- border:2px solid green;
- /* otras propiedades */
-}
-/*caso contrario, el color sera rojo*/
-form input[type="text"]:focus:required:invalid{
- border:2px solid red;
- /* otras propiedades */
+body {
+background: #EEE9E8;
 }
 
-
-
-.form{
-
-    background:#f1f1f1; width:470px; margin:0 auto; padding-left:50px; padding-top:20px;
-
+.rounded-lg {
+border-radius: 1rem;
 }
 
-.form fieldset{border:0px; padding:0px; margin:0px;}
+.nav-pills .nav-link {
+color: #555;
+}
 
-.form p.contact { font-size: 12px; margin:0px 0px 10px 0;line-height: 14px; font-family:Arial, Helvetica;}
+.nav-pills .nav-link.active {
+color: #fff;
+}
 
- 
 
-.form input[type="text"] { width: 400px; }
-
-.form input[type="email"] { width: 400px; }
-
-.forminput[type="password"] { width: 400px; }
-
-.form input.birthday{width:60px;}
-
-.form input.birthyear{width:120px;}
-
-.form label { color: #000; font-weight:bold;font-size: 12px;font-family:Arial, Helvetica; }
-
-.form label.month {width: 135px;}
-
-.form input, textarea { background-color: rgba(255, 255, 255, 0.4); border: 1px solid rgba(122, 192, 0, 0.15); padding: 7px; font-family: Keffeesatz, Arial; color: #4b4b4b; font-size: 14px; -webkit-border-radius: 5px; margin-bottom: 15px; margin-top: -10px; }
-
-.form input:focus, textarea:focus { border: 1px solid #ff5400; background-color: rgba(255, 255, 255, 1); }
-
-.form .select-style {
-
-  -webkit-appearance: button;
-
-  -webkit-border-radius: 2px;
-
-  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-
-  -webkit-padding-end: 20px;
-
-  -webkit-padding-start: 2px;
-
-  -webkit-user-select: none;
-
-  background-image: url(images/select-arrow.png),
-
-    -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
-
-  background-position: center right;
-
-  background-repeat: no-repeat;
-
-  border: 0px solid #FFF;
-
-  color: #555;
-
-  font-size: inherit;
-
-  margin: 0;
-
-  overflow: hidden;
-
-  padding-top: 5px;
-
-  padding-bottom: 5px;
-
-  text-overflow: ellipsis;
-
-  white-space: nowrap;}
-
-.form .gender {
-
-  width:410px;
-
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 
-.form input.buttom{ background: #4b8df9; display: inline-block; padding: 5px 10px 6px; color: #fbf7f7; text-decoration: none; font-weight: bold; line-height: 1; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; -moz-box-shadow: 0 1px 3px #999; -webkit-box-shadow: 0 1px 3px #999; box-shadow: 0 1px 3px #999; text-shadow: 0 -1px 1px #222; border: none; position: relative; cursor: pointer; font-size: 14px; font-family:Verdana, Geneva, sans-serif;}
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
 
-.form input.buttom:hover    { background-color: #2a78f6; }
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 1500px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
 
+    .card{
+      width: 80%;
+      position: absolute;
+      left: 170px;
+    }
 
-.form input.buttom_act{ background: #34AA54; display: inline-block; padding: 5px 10px 6px; color: #fbf7f7; text-decoration: none; font-weight: bold; line-height: 1; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; -moz-box-shadow: 0 1px 3px #999; -webkit-box-shadow: 0 1px 3px #999; box-shadow: 0 1px 3px #999; text-shadow: 0 -1px 1px #222; border: none; position: relative; cursor: pointer; font-size: 14px; font-family:Verdana, Geneva, sans-serif;}
-
-.form input.buttom_act:hover    { background-color: #34AA54; }
 
 </style>
+    <!-- Custom styles for this template -->
 
- <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link href="../vendor/twitter/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" >
 
 <script type="text/javascript" src="js/jquery.js" ></script>
 <script type="text/javascript" src="js/add.js"  ></script>
@@ -199,75 +169,152 @@ document.getElementById("telefono").value = tele;
 
 <body onLoad="tipoID();readDOM();">
 
+<div class="card">
+  <div class="card-header">
+    Registro De Cliente
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Tratamiento de Datos de Cliente</h5>
 
-<div  class="form">
-            <form id="contactform">
+    <form id="contactform">
+
+        <div class="form-group">
+
+          <label for="username">Tipo de Documento</label> 
+
+            <div class="input-group">
+                    <select id="tipo_doc" class="form-control" name="tipo_doc" class="select-style"></select>
+            </div>
+
+        </div>
+          
+
+        <div class="form-group">
+
+          <label for="username">Documento</label> 
+
+            <div class="input-group">
+    
+              <input id="identificacion" class="form-control" name="identificacion" placeholder="Numero de indentificacion" type="text"/>
+
+            </div>
+
+        </div>
 
 
-            <fieldset class="row1">
+        <div class="form-group">
 
-            <legend>REGISTRO CLIENTES</legend>
+          <label for="username">Nombre(s)</label> 
 
-                <label>Tipo Documento</label>
+            <div class="input-group">
 
-                      <select id="tipo_doc" name="tipo_doc" class="select-style">
-        
-            </select>
-                      
+                <input class="form-control" id="nombre" name="nombre" placeholder="Nombre completo" required type="text"/>
 
-                      </fieldset>
+            </div>
 
-                      <br>
-                      <br>
-                      
-              
+        </div>
 
-                <p class="contact"><label for="identificacion">Identificacion</label></p>
-                
-                <input class="tabable1" id="identificacion" name="identificacion" placeholder="Numero de indentificacion"  tabindex="1" type="text"  >
+
+
+        <div class="form-group">
+
+          <label for="username">Apellidos</label> 
+
+            <div class="input-group">
+
+              <input class="form-control" id="apellido" name="apellido" placeholder="Contacto" required type="text"/>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="form-group">
+
+          <label for="username">Direccion</label> 
+
+            <div class="input-group">
+
+                <input class="form-control"  id="direccion" name="direccion" required type="text" placeholder = "Direccion Residencia"/>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="username">Complemento Direccion</label> 
+
+              <div class="input-group">
+
+                    <input class="form-control"  id="compdireccion" name="compdireccion" required type="text" placeholder = "Complemento Direccion"/>
+
+              </div>
+
+        </div>
+
+
+
+        <div class="form-group">
+
+          <label for="username">Telefono</label> 
+
+            <div class="input-group">
+
+              <input class="form-control" type="text"  id="telefono" name="telefono" required tabindex="4" placeholder = "Telefono Residencia" style="text-transform: uppercase">
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="username">Otro Telefono</label> 
+
+            <div class="input-group">
+
+                <input class="form-control" id="celular" name="celular" required type="text" placeholder = "Otro Telefono" tabindex="5" style="text-transform: uppercase">
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="username">Email</label> 
+
+            <div class="input-group">
+
+                <input class="form-control" id="email" name="email" required type="text" placeholder = "Correo Electronico" tabindex="5" style="text-transform: uppercase">
+            
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="username">Fecha Nacimiento</label>
+
+                <div class="input-group">
+
+                    <input class="form-control" id="nacimiento" name="nacimiento" required type="text" placeholder = "Correo Electronico" tabindex="5" style="text-transform: uppercase">
+  
+                </div>
+
+        </div>
+
  
-                <p class="contact"><label for="nombre">Nombre Cliente / Empresa</label></p>
 
-                <input class="tabable2" id="nombre" name="nombre" placeholder="Nombre completo" required tabindex="1" type="text" style="text-transform: uppercase">
+        <input class="subscribe btn btn-primary btn-block rounded-pill shadow-sm" onClick="addCliente()" name="submit" id="submit" value="Agregar" >   
 
-                 <p class="contact"><label for="ápellido">Contacto</label></p>
-
-                <input class="tabable2" id="apellido" name="apellido" placeholder="Contacto" required tabindex="2" type="text" style="text-transform: uppercase">
-
- 
-
-                <p class="contact"><label for="direccion">Direccion</label></p>
-
-                <input class="tabable"  id="direccion" name="direccion" required tabindex="3" type="text" placeholder = "Direccion Residencia" style="text-transform: uppercase">
+   </form>
 
 
-                <p class="contact"><label for="compdire">Complemento Direccion</label></p>
-
-                <input class="tabable"  id="compdireccion" name="compdireccion" required tabindex="3" type="text" placeholder = "Complemento Direccion" style="text-transform: uppercase">
-
-
-
-                  <p class="contact"><label for="telefono123">Telefono</label></p>
-
-                <input class="tabable" type="text"  id="telefono" name="telefono" required tabindex="4" placeholder = "Telefono Residencia" style="text-transform: uppercase">
-
-
-                  <p class="contact"><label for="celular">Otro Telefono</label></p>
-
-                <input class="tabable" id="celular" name="celular" required type="text" placeholder = "Otro Telefono" tabindex="5" style="text-transform: uppercase">
-
-                 <p class="contact"><label for="correo">Email</label></p>
-
-                <input class="tabable" id="email" name="email" required type="text" placeholder = "Correo Electronico" tabindex="5" style="text-transform: uppercase">
-
-         
-              <br>
-
-            <input class="buttom" onClick="addCliente()" name="submit" id="submit" tabindex="5" value="Agregar" type="button" >   
-
-               </form>
-
+  </div>
 </div>
+
 
 </body>
 

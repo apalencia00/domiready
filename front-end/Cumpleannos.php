@@ -240,34 +240,18 @@ var key=document.all ? e.which : e.keyCode;
 
 <form id="form" name="form" method="post" action="" class="register">
 
-<div class="form-group">
 
-<div class="input-group">
-
-   <div class="col">
-
-       <label for="username">Telefono</label> 
-
-        <input class="form-control" type="text" name="telcliente" id="telcliente" onkeypress="buscarCliente(event)"/>
-
-   </div>
-
-   <div class="col" >
-
-     <label for="username">Nombre Cliente</label> 
-
-     <input class="form-control" type="text" name="nomcliente" id="nomcliente" onkeypress="buscarCliente(event)"/>
-
-   </div>
+<div class="card">
+  <div class="card-header">
+    Prospectar Clientes
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Aplica para clientes no concurrentes o que se perdieron</h5>
 
 
- </div>
+            
+            <table class="table table-striped" id="tableID" width="80%" height="70%" align="center" >
 
-</div>
-
- <div class="">
-
- <table class="table table-striped" id="tableID" width="80%" height="70%" align="center" >
                   <thead>
                     <tr>
                       <td width="10%" >ID</td>
@@ -284,99 +268,20 @@ var key=document.all ? e.which : e.keyCode;
                     </thead>
 
                     <tbody id="tbody">
-                    <tr>
-                      <td colspan="13">
-          <div id="act_table" style="width: 100%; height: 200px; overflow-y: scroll;" > </div></td>
-                    </tr>
+                        <tr>
+                            <td colspan="13">
+                                <div id="act_table" style="width: 100%; height: 200px; overflow-y: scroll;" > </div>
+                            </td>
+                        </tr>
 
                     </tbody>
-                  </table>
 
+            </table>
 
-
-                </div>
-
-
-
-            </fieldset>
-
-
-             <div id="dialog" style="display:none" title="Evento de Aplicacion">
-
-      <p class="validateTips">Datos Cliente</p>
- 
-  <form id="form_dialog" name="form_dialog" >
-    <fieldset>
-
-     <p>
-      
-        <label for="numservi">Identificacion</label>
-      <input type="text" name="ident" id="ident" class="text ui-widget-content ui-corner-all" readonly="" >
-
-
-    </p>
-
-
-    <p>
-      
-        <label for="numservi">Nombre</label>
-      <input type="text" name="nombre" id="nombre" class="text ui-widget-content ui-corner-all">
-
-
-    </p>
-
-    <p>
-      <label for="fecha">Contacto</label>
-      <input type="text" name="apellido" id="apellido"   class="text ui-widget-content ui-corner-all">
-
-      </p>
-
-      <p>
-      <label for="us">Direccion</label>
-      <input type="text" name="direccion" id="direccion"  class="text ui-widget-content ui-corner-all">
-
-      </p>
-
-	<p>
-      <label for="us">Complemento Direccion</label>
-      <input type="text" name="compdireccion" id="compdireccion"  class="text ui-widget-content ui-corner-all">
-
-      </p>
-
-      <p>
-      <label for="obs">Telefono</label>
-      <input type="text" id="telefono" name="telefono" class="text ui-widget-content ui-corner-all" ></input >
-
-      </p>
-
-<p>
-      <label for="obs">Otro Telefono</label>
-      <input type="text" id="otrotelefono" name="otrotelefono" class="text ui-widget-content ui-corner-all" ></input >
-
-      </p>
-
-      <p>
-
-      <label for="obs">Email</label>
-      <input type="text" id="email" name="email" class="text ui-widget-content ui-corner-all" ></input >
-
-
-      </p>               
- 
-      <!-- Allow form submission with keyboard without duplicating the dialog button -->
-      <input type="text" type="submit"  style="position:absolute; top:-1000px" value="Aceptar" >
-    </fieldset>
-  </form>
 
   </div>
-
-
-
-
-
-</form>
-
 </div>
+ 
 
 </body>
 </html>

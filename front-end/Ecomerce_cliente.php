@@ -228,6 +228,14 @@ var key=document.all ? e.which : e.keyCode;
 
 }
 
+function callPaget(page){
+
+if(page != ""){
+    
+    $("#content").load(page);
+}
+}
+
 
   
 </script>
@@ -236,147 +244,54 @@ var key=document.all ? e.which : e.keyCode;
 
 <body >
 
-<div id="wrapper">
+<div class="row">
 
-<form id="form" name="form" method="post" action="" class="register">
+        <div class="col">
 
-<div class="form-group">
+            <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="images/contacto.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Prospectar Cliente</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" onclick="callPaget('Prospectos.php')" class="btn btn-primary">Contactar Clientes</a>
+            </div>
+            </div>
 
-<div class="input-group">
-
-   <div class="col">
-
-       <label for="username">Telefono</label> 
-
-        <input class="form-control" type="text" name="telcliente" id="telcliente" onkeypress="buscarCliente(event)"/>
-
-   </div>
-
-   <div class="col" >
-
-     <label for="username">Nombre Cliente</label> 
-
-     <input class="form-control" type="text" name="nomcliente" id="nomcliente" onkeypress="buscarCliente(event)"/>
-
-   </div>
-
-
- </div>
-
-</div>
-
- <div class="">
-
- <table class="table table-striped" id="tableID" width="80%" height="70%" align="center" >
-                  <thead>
-                    <tr>
-                      <td width="10%" >ID</td>
-                      <td width="10%" >IDENTIFICACION</td>
-                      <td width="10%" >NOMBRE</td>
-                      <td width="10%" >CONTACTO</td>
-                      <td width="10%" >DIRECION</td>
-                      <td width="10%" >COMP.DIRECCION</td>
-                      <td width="10%" >TELEFONO</td>
-                      <td width="10%" >EMAIL</td>
-                      <td width="10%" >CELULAR</td>
-                    </tr>
-
-                    </thead>
-
-                    <tbody id="tbody">
-                    <tr>
-                      <td colspan="13">
-          <div id="act_table" style="width: 100%; height: 200px; overflow-y: scroll;" > </div></td>
-                    </tr>
-
-                    </tbody>
-                  </table>
+        </div>
 
 
 
-                </div>
+        <div class="col" >
+
+            <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="images/cumple.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Cumpleaños</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#"  onclick="callPaget('Cumpleannos.php')" class="btn btn-primary">Contactar Clientes</a>
+            </div>
+            </div>
+
+        </div>
+
+
+        <div class="col">
+
+                <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="images/clientes_mayores.png" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Clientes Hot</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#"  onclick="callPaget('ClientesHot.php')" class="btn btn-primary">Contactar Clientes</a>
+        </div>
+        </div>
 
 
 
-            </fieldset>
-
-
-             <div id="dialog" style="display:none" title="Evento de Aplicacion">
-
-      <p class="validateTips">Datos Cliente</p>
- 
-  <form id="form_dialog" name="form_dialog" >
-    <fieldset>
-
-     <p>
-      
-        <label for="numservi">Identificacion</label>
-      <input type="text" name="ident" id="ident" class="text ui-widget-content ui-corner-all" readonly="" >
-
-
-    </p>
-
-
-    <p>
-      
-        <label for="numservi">Nombre</label>
-      <input type="text" name="nombre" id="nombre" class="text ui-widget-content ui-corner-all">
-
-
-    </p>
-
-    <p>
-      <label for="fecha">Contacto</label>
-      <input type="text" name="apellido" id="apellido"   class="text ui-widget-content ui-corner-all">
-
-      </p>
-
-      <p>
-      <label for="us">Direccion</label>
-      <input type="text" name="direccion" id="direccion"  class="text ui-widget-content ui-corner-all">
-
-      </p>
-
-	<p>
-      <label for="us">Complemento Direccion</label>
-      <input type="text" name="compdireccion" id="compdireccion"  class="text ui-widget-content ui-corner-all">
-
-      </p>
-
-      <p>
-      <label for="obs">Telefono</label>
-      <input type="text" id="telefono" name="telefono" class="text ui-widget-content ui-corner-all" ></input >
-
-      </p>
-
-<p>
-      <label for="obs">Otro Telefono</label>
-      <input type="text" id="otrotelefono" name="otrotelefono" class="text ui-widget-content ui-corner-all" ></input >
-
-      </p>
-
-      <p>
-
-      <label for="obs">Email</label>
-      <input type="text" id="email" name="email" class="text ui-widget-content ui-corner-all" ></input >
-
-
-      </p>               
- 
-      <!-- Allow form submission with keyboard without duplicating the dialog button -->
-      <input type="text" type="submit"  style="position:absolute; top:-1000px" value="Aceptar" >
-    </fieldset>
-  </form>
-
-  </div>
-
-
-
-
-
-</form>
+        </div>
 
 </div>
+ 
 
 </body>
 </html>

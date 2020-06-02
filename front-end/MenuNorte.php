@@ -48,7 +48,7 @@ if($_SESSION['cod_usu'] != 0 )  {
     <table width="100%" height="25px" >
         <tr>
        
-            <td style="font: Verdana, Geneva, sans-serif; text-align: start; text-align:"> <img id="imagen" class="avatar" src="<?php echo '../images/usuarios/' . $usuario . ".jpg" ?>"   />  </td>
+            <td style="font: Verdana, Geneva, sans-serif; text-align: start; text-align: center"> <img id="imagen" class="avatar" src="<?php echo '../images/usuarios/' . $usuario . ".jpg" ?>"   />  </td>
             
             <td>
            

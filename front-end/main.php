@@ -89,7 +89,7 @@ if( $_SESSION['admon_mod'] != 0 || $_SESSION['admon_mod'] != "" || $_SESSION['ad
 .newsletter-box input#appendedInputButton {
   background: #FFFFFF;
   display: inline-block;
-  float: left;
+  
   height: 30px;
   clear: both;
   width: 100%;
@@ -177,7 +177,7 @@ if( $_SESSION['admon_mod'] != 0 || $_SESSION['admon_mod'] != "" || $_SESSION['ad
 */
 
 body {
-background: #f5f5f5;
+background: #F5F4F4; 
 }
 
 .rounded-lg {
@@ -243,9 +243,9 @@ color: #fff;
           .responsive-iframe {
 
             position: absolute;
-           
+            
             left: 20px;
-            bottom: 10px;
+            bottom: 20px;
             padding-right: 2px;
             right: 2px;
             width: 98%;
@@ -264,32 +264,34 @@ color: #fff;
 
         if(page != ""){
             
-            window.frames[0].location.href = page;
+            $("#content").load(page);
         }
     }
 
     function CerrarSesion(){
 
       var r = confirm("¿Desea cerrar sesión?");
-if (r == true) {
+
+        if (r == true) {
   
-   $.ajax({ url: "../back-end/Source/CerrarSession.php", 
-           type: "GET",
-         contentType: "application/json",
-         dataType: 'json',
-         data: {}, 
+          $.ajax({ url: "../back-end/Source/CerrarSession.php", 
+            
+            type: "GET",
+            contentType: "application/json",
+            dataType: 'json',
+            data: {}, 
 
               success: function(json){
            
-           var res = json.success;                     
+                  var res = json.success;                     
                   
-           if(res){
-              window.location = '../index.php';
-           }else{
-            alert(json.root[0].mensaje);
-           }
+                    if(res){
+                        window.location = '../index.php';
+                    }else{
+                      alert(json.root[0].mensaje);
+                    }
 
-         }
+                  }
 
        });
 
@@ -304,11 +306,9 @@ if (r == true) {
   </script>
 
 </head>
-<body >
+<body onload="javascript:callPaget('<?php echo "Ecomerce_cliente.php" ?>')" >
 
         <div class="container-fluid"> <br>
-
-
 
               <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
                 <!-- Brand -->
@@ -353,35 +353,14 @@ if (r == true) {
 
                   <div >
 
-                    <iframe frameborder="0" allowfullscreen class="responsive-iframe" id="servicio" ></iframe>
+                    <div frameborder="0" class="responsive-iframe" id="content" ></div>
 
                   </div>
 
         </div>
 
 
-      <div class="footer-bottom">
 
-              <div class="container">
-
-                  <div class="pull-left"> Developed © Andres Palencia Florez.</div>
-        
-                      <div class="pull-right">
-
-                            <ul class="social">
-                  
-                                    <li> <a href="#"> <i class="fa fa-facebook">     </i> </a> </li>
-                                    <li> <a href="#"> <i class="fa fa-twitter">     </i> </a> </li>
-                                    <li> <a href="#"> <i class="fa fa-google-plus"> </i> </a> </li>
-                                    <li> <a href="#"> <i class="fa fa-youtube">     </i> </a> </li>
-                  
-                            </ul>
-        
-                      </div>
-
-              </div>
-
-      </div>
   
                  
   
