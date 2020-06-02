@@ -1,7 +1,9 @@
 
 <?php 
 
-error_reporting(0);
+require_once '../back-end/Model/Module.php';
+
+error_reporting(E_ALL);
 
 $server     = "18.191.168.53" ;
  $database   = "domiready_db" ;
@@ -14,7 +16,7 @@ or die('No es posible la conexion: ' . pg_last_error());
 
 echo "Si conecto a postres";
 
-require_once '../back-end/Model/Module.php';
+
 
 session_start(); 
 
