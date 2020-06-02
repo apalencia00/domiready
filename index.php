@@ -11,6 +11,8 @@ $stringConnection="host=".$this->server." dbname=".$this->database." user=".$use
 $this->connection = pg_connect($stringConnection)
 or die('No es posible la conexion: ' . pg_last_error());
 
+echo "Si conecto a postres";
+
 
 exit(0);
 
