@@ -6,14 +6,14 @@
 
 
 div.main{
-    background: #ff3b30; /* Old browsers */
-background: -moz-radial-gradient(center, ellipse cover,  #ff3b30 1%, #ff1407 100%); /* FF3.6+ */
-background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(1%,#ff3b30), color-stop(100%,#ff1407)); /* Chrome,Safari4+ */
-background: -webkit-radial-gradient(center, ellipse cover,  #ff3b30 1%,#ff1407 100%); /* Chrome10+,Safari5.1+ */
-background: -o-radial-gradient(center, ellipse cover,  #ff3b30 1%,#ff1407 100%); /* Opera 12+ */
-background: -ms-radial-gradient(center, ellipse cover,  #ff3b30 1%,#ff1407 100%); /* IE10+ */
-background: radial-gradient(ellipse at center,  #ff3b30 1%,#ff1407 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3b30', endColorstr='#ff1407',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    background: hsl(0, 22%, 95%); /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover,  hsl(0, 22%, 95%) 1%, hsl(0, 9%, 89%) 100%); /* FF3.6+ */
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(1%,hsl(0, 22%, 95%)), color-stop(100%,hsl(0, 9%, 89%))); /* Chrome,Safari4+ */
+background: -webkit-radial-gradient(center, ellipse cover,  hsl(0, 22%, 95%) 1%,hsl(0, 9%, 89%) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-radial-gradient(center, ellipse cover,  hsl(0, 22%, 95%) 1%,hsl(0, 9%, 89%) 100%); /* Opera 12+ */
+background: -ms-radial-gradient(center, ellipse cover,  hsl(0, 22%, 95%) 1%,hsl(0, 9%, 89%) 100%); /* IE10+ */
+background: radial-gradient(ellipse at center,  hsl(0, 22%, 95%) 1%,hsl(0, 9%, 89%) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='hsl(0, 22%, 95%)', endColorstr='#hsl(0, 9%, 89%)',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 height:calc(100vh);
 width:100%;
 }
