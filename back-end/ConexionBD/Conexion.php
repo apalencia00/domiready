@@ -34,7 +34,7 @@ class Conexion {
         $this->connection = pg_connect($stringConnection)
         or die('No es posible la conexion: ' . pg_last_error());
         
-        #var_dump($stringConnection);
+        var_dump($stringConnection);
         
     }
     
