@@ -2,9 +2,9 @@
 // Connecting, selecting database
    
    session_start();
-   session_id();
+   
 
-   error_reporting(0);
+   error_reporting(E_ALL);
 
 class Conexion {
 
