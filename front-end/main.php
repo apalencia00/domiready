@@ -1,9 +1,11 @@
 
 <?php 
 
+error_reporting(E_ALL);
+
 require_once '../back-end/Model/Module.php';
 
-error_reporting(E_ALL);
+
 
 $server     = "18.191.168.53" ;
  $database   = "domiready_db" ;
