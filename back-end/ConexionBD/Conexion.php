@@ -10,7 +10,7 @@ class Conexion {
 
     var $db, $connection;
     
-    private $server = "localhost" ;
+    private $server = "http://ec2-18-191-168-53.us-east-2.compute.amazonaws.com/" ;
     private $database = "domiready_db" ;
     private  $username = "domiready_u" ;
     private  $password = "/*-domiready_pw";
