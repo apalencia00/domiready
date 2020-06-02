@@ -2,6 +2,20 @@
 
 #phpinfo();
 
+ $server     = "18.191.168.53" ;
+ $database   = "domiready_db" ;
+  $username  = "domiready_u" ;
+  $password  = "/*-domiready_pw";
+
+$stringConnection="host=".$this->server." dbname=".$this->database." user=".$user." password=".$pass;
+$this->connection = pg_connect($stringConnection)
+or die('No es posible la conexion: ' . pg_last_error());
+
+
+exit(0);
+
+
+
 ?>
 
 <!DOCTYPE html>
