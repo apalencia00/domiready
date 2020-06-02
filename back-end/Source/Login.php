@@ -3,7 +3,7 @@
 error_reporting(0);
 session_start(); 
 
-require '../ConexionBD/Conexion.php';
+require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/domiready/back-end/ConexionBD/Conexion.php');
 
 
 $usuario    = $_GET['un'];

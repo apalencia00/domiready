@@ -1,10 +1,6 @@
 <?php
-// Connecting, selecting database
-   
-   session_start();
-   
 
-   error_reporting(E_ALL);
+error_reporting(0);
 
 class Conexion {
 
@@ -38,7 +34,7 @@ class Conexion {
         $this->connection = pg_connect($stringConnection)
         or die('No es posible la conexion: ' . pg_last_error());
         
-        //var_dump($stringConnection);
+        #var_dump($stringConnection);
         
     }
     
@@ -82,8 +78,6 @@ class Conexion {
 
       public function executePLoutParam($pl){
       
-       
-        
         $sql = "SELECT * from $pl()";
 
         $result = $this->executeQuery($sql);

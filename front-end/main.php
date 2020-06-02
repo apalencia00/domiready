@@ -1,26 +1,16 @@
 
 <?php 
 
-error_reporting(E_ERROR | E_WARNING | E_PARSE);
-
-require_once ('../back-end/Model/Module.php');
 
 
+error_reporting(0);
 
-$server     = "18.191.168.53" ;
- $database   = "domiready_db" ;
-  $username  = "domiready_u" ;
-  $password  = "/*-domiready_pw";
-
-$stringConnection="host=".$server." dbname=".$database." user=".$username." password=".$password;
-pg_connect($stringConnection)
-or die('No es posible la conexion: ' . pg_last_error());
-
-echo "Si conecto a postres";
-
+require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/domiready/back-end/ConexionBD/Conexion.php');
 
 
 session_start(); 
+
+
 
 if( $_SESSION['admon_mod'] != 0 || $_SESSION['admon_mod'] != "" || $_SESSION['admon_mod'] != null  )  {
 
