@@ -146,6 +146,19 @@ color: #fff;
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqNsWRsCY97sIMrAzW6gt-1j1xI72L9Rg&callback=initMap">
             </script>
 
+
+<script>
+
+$(document).ready(function(){
+
+  document.body.style.zoom = "75%";
+
+});
+
+
+
+</script>
+
 <script>
 
 function buscarRepartidor(){

@@ -211,6 +211,14 @@ getSaldoActual();
 </script>
 
 
+<script>
+
+$(document).ready(function(){
+
+  document.body.style.zoom = "75%";
+});
+
+</script>
 
 </head>
 

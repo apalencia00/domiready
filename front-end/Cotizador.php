@@ -112,8 +112,15 @@
     <!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/VentanaCentrada.js"></script>
+
+	<script>
+
+
+
+</script>
 	<script>
 		$(document).ready(function(){
+			document.body.style.zoom = "75%";
 			load(1);
 		});
 

@@ -12,6 +12,18 @@
 
 <script type="text/javascript" src="js/ajax2.js"  ></script>
 
+<script>
+
+$(document).ready(function(){
+
+  document.body.style.zoom = "75%";
+
+});
+
+
+
+</script>
+
 
 
 <script type="text/javascript">

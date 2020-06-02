@@ -107,6 +107,15 @@ $modulos = $_SESSION['admon_mod'];
 
 </style>
 
+<script>
+
+$(document).ready(function(){
+
+  document.body.style.zoom = "75%";
+});
+
+</script>
+
 <script type="text/javascript">
 
 function acepta(){

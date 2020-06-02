@@ -12,6 +12,18 @@
 <script type="text/javascript" src="js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.min.js" ></script>
 
+<script>
+
+$(document).ready(function(){
+
+  document.body.style.zoom = "75%";
+
+});
+
+
+
+</script>
+
 
 <script type="text/javascript" src="js/ajax.js"  ></script>
 

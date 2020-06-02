@@ -114,6 +114,18 @@ color: #fff;
 
  </style>
 
+<script>
+
+$(document).ready(function(){
+
+  document.body.style.zoom = "75%";
+
+});
+
+
+
+</script>
+
 
 
  <script>

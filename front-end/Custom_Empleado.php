@@ -447,6 +447,18 @@ function localizarMovilSucursal(suc)
 
 </head>
 
+<script>
+
+$(document).ready(function(){
+
+  document.body.style.zoom = "75%";
+
+});
+
+
+
+</script>
+
 <body >
 
     <form id="form" name="form" method="post" action="">

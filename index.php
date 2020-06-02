@@ -23,6 +23,16 @@
 
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
+<script>
+
+$(document).ready(function(){
+
+  document.body.style.zoom = "80%";
+
+});
+
+</script>
+
 <div class="main">
     
     

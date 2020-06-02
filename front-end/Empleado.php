@@ -106,6 +106,18 @@ color: #fff;
 <script type="text/javascript" src="js/jquery.js" ></script>
 <script type="text/javascript" src="js/ajax.js"  ></script>
 
+<script>
+
+$(document).ready(function(){
+
+  document.body.style.zoom = "75%";
+
+});
+
+
+
+</script>
+
 <script type="text/javascript">
 
 function limpiarAll(){

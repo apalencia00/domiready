@@ -82,6 +82,18 @@ function getConceptoCaja(){
   
 </script>
 
+<script>
+
+$(document).ready(function(){
+
+  document.body.style.zoom = "75%";
+
+});
+
+
+
+</script>
+
 </head>
 
 <body onload="getConceptoCaja();" >

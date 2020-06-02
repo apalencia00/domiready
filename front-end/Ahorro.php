@@ -29,7 +29,8 @@
 
 .form label.month {width: 135px;}
 
-.form input, textarea { background-color: rgba(255, 255, 255, 0.4); border: 1px solid rgba(122, 192, 0, 0.15); padding: 7px; font-family: Keffeesatz, Arial; color: #4b4b4b; font-size: 14px; -webkit-border-radius: 5px; margin-bottom: 15px; margin-top: -10px; }
+.form input, textarea { background-color: rgba(255, 255, 255, 0.4); border: 1px solid rgba(122, 192, 0, 0.15); padding: 7px; font-family: Keffeesatz, Arial; color: #4b4b4b; font-size: 14px; 
+  : 5px; margin-bottom: 15px; margin-top: -10px; }
 
 .form input:focus, textarea:focus { border: 1px solid #ff5400; background-color: rgba(255, 255, 255, 1); }
 
@@ -97,7 +98,17 @@
 
 <script type="text/javascript" src="js/add.js"  ></script>
 
+<script>
 
+$(document).ready(function(){
+
+  document.body.style.zoom = "75%";
+
+});
+
+
+
+</script>
 
 
 <script type="text/javascript">

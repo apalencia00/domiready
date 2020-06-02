@@ -114,6 +114,16 @@ session_start();
 
 <script type="text/javascript" src="../js/jquery.js" ></script>
 
+<script>
+
+$(document).ready(function(){
+
+  document.body.style.zoom = "75%";
+
+})
+
+</script>
+
 <script src="../js/jquery.growl.js" type="text/javascript"></script>
 <link href="../css/jquery.growl.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="../js/ajax.js"></script>

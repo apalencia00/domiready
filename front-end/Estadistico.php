@@ -4,6 +4,18 @@
 
 <script type="text/javascript" src="js/jquery.js"></script>
 
+<script>
+
+$(document).ready(function(){
+
+  document.body.style.zoom = "75%";
+
+});
+
+
+
+</script>
+
 <script type="text/javascript" src="js/jquery-ui.min.js"></script>
 <script src="js/morris/raphael-min.js"></script>
 <script src="js/morris/jquery-1.8.2.min.js"></script>

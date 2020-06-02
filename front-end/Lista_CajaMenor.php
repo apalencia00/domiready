@@ -14,6 +14,17 @@
   
   <script type="text/javascript" src="js/jquery.js" ></script>
   
+  <script>
+
+$(document).ready(function(){
+
+  document.body.style.zoom = "75%";
+
+});
+
+
+
+</script>
 
   <script>
 

@@ -265,6 +265,8 @@ color: #fff;
 
 $(document).ready(function(){
 
+  document.body.style.zoom = "75%";
+
   console.log("entrao aqui");
 
   callPaget('<?php echo "Ecomerce_cliente.php" ?>');
