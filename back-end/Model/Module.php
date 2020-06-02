@@ -1,8 +1,8 @@
 <?php
 
-error_reporting(E_ALL);
+error_reporting(0);
 
-require '../ConexionBD/Conexion.php';
+require_once (realpath($_SERVER["DOCUMENT_ROOT"]) . '/domiready/back-end/ConexionBD/Conexion.php');
 
 class Modulo {
     
