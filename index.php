@@ -39,7 +39,7 @@
 
           <fieldset class="clearfix">
 
-            <p ><span class="fa fa-user"></span><input type="text" value="domiready_db" id="login_username" Placeholder="Username" required></p> <!-- JS because of IE support; better: placeholder="Username" -->
+            <p ><span class="fa fa-user"></span><input type="text" value="domiready_u" id="login_username" Placeholder="Username" required></p> <!-- JS because of IE support; better: placeholder="Username" -->
             <p><span class="fa fa-lock"></span><input type="password" value="/*-domiready_pw" id="login_password"  Placeholder="Password" required></p> <!-- JS because of IE support; better: placeholder="Password" -->
             
              <div>
