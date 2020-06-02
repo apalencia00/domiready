@@ -1,7 +1,7 @@
 
 <?php 
 
-error_reporting(E_ALL);
+error_reporting(0);
 
 require_once '../back-end/Model/Module.php';
 
