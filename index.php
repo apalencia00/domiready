@@ -14,7 +14,7 @@ or die('No es posible la conexion: ' . pg_last_error());
 echo "Si conecto a postres";
 
 
-exit(0);
+
 
 
 
