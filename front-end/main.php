@@ -3,7 +3,7 @@
 
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
-require_once '../back-end/Model/Module.php';
+require_once ('../back-end/Model/Module.php');
 
 
 
