@@ -5,9 +5,6 @@ session_start();
 
 $cadena = explode("/",$_SERVER["DOCUMENT_ROOT"]  );
 
-var_dump($_SERVER["DOCUMENT_ROOT"]);
-var_dump($cadena[3]); exit();
-
 if ($cadena[3] == "domiready") {
     require_once($_SERVER["DOCUMENT_ROOT"] . '/back-end/ConexionBD/Conexion.php');
 }

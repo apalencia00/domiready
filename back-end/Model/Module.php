@@ -4,11 +4,11 @@ error_reporting(0);
 
 $cadena = explode("/",$_SERVER["DOCUMENT_ROOT"]  );
 
-if ($cadena[2] == "domiready") {
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/back-end/ConexionBD/Conexion.php');
+if ($cadena[3] == "domiready") {
+    require_once($_SERVER["DOCUMENT_ROOT"] . '/back-end/ConexionBD/Conexion.php');
 }
 else{
-    require_once(realpath($_SERVER["DOCUMENT_ROOT"]).'/domiready' . '/back-end/ConexionBD/Conexion.php');
+    require_once($_SERVER["DOCUMENT_ROOT"].'/domiready' . '/back-end/ConexionBD/Conexion.php');
 }
 
 
