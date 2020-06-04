@@ -5,6 +5,7 @@ session_start();
 
 $cadena = explode("/",$_SERVER["DOCUMENT_ROOT"]  );
 
+var_dump($_SERVER["DOCUMENT_ROOT"]);
 var_dump($cadena[2]); exit();
 
 if ($cadena[2] == "domiready") {
