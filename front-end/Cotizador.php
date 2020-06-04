@@ -128,7 +128,7 @@
 			var q= $("#q").val();
 			$("#loader").fadeIn('slow');
 			$.ajax({
-				url:'./ajax/productos_cotizacion.php?action=ajax&page='+page+'&q='+q,
+				url:'../back-end/Source/productos_cotizacion.php?action=ajax&page='+page+'&q='+q,
 				 beforeSend: function(objeto){
 				 $('#loader').html('<img src="./img/ajax-loader.gif"> Cargando...');
 			  },
@@ -162,7 +162,7 @@
 			
 			$.ajax({
         type: "POST",
-        url: "./ajax/agregar_cotizador.php",
+        url: "../back-end/Source/agregar_cotizador.php",
         data: "id="+id+"&precio_venta="+precio_venta+"&cantidad="+cantidad,
 		 beforeSend: function(objeto){
 			$("#resultados").html("Mensaje: Cargando...");
@@ -178,7 +178,7 @@
 			
 			$.ajax({
         type: "GET",
-        url: "./ajax/agregar_cotizador.php",
+        url: "../back-end/Source/agregar_cotizador.php",
         data: "id="+id,
 		 beforeSend: function(objeto){
 			$("#resultados").html("Mensaje: Cargando...");

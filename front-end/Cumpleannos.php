@@ -255,10 +255,10 @@ $(document).ready(function(){
 
 <div class="card">
   <div class="card-header">
-    Prospectar Clientes
+    Clientes de Cumpleaños
   </div>
   <div class="card-body">
-    <h5 class="card-title">Aplica para clientes no concurrentes o que se perdieron</h5>
+    <h5 class="card-title">Aplica para clientes que cumplen años</h5>
 
 
             

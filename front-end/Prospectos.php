@@ -91,6 +91,18 @@ color: #fff;
   <script type="text/javascript" src="bootstrap/js/bootstrap.min.js" ></script>
 
 
+  <script>
+
+      $(document).ready(function(){
+
+  document.body.style.zoom = "75%";
+
+      });
+
+
+  </script>
+
+
 <script>
 
 function editar(ident){
@@ -143,26 +155,27 @@ function editar(ident){
       
           if( nombre[0].value != "" || apellido[0].value != "" || direccion[0].value != "" || telefono[0].value != ""  ){
 
-          $.ajax({ url: "../back-end/Source/Parametrico_Cliente.php", 
-      
-         type: "GET",
-         contentType: "application/json",
-         dataType: 'json',
-            data: {"oper":7, "ident" : ident[0].value ,"nomb" : nombre[0].value, "ape" : apellido[0].value, "dire" : direccion[0].value, "comp_dire" : compdire[0].value  ,"tel" : telefono[0].value , "email" : email[0].value, "celular" : otrotelefono[0].value },         
+          $.ajax({ 
+            
+            url: "../back-end/Source/Parametrico_Cliente.php", 
+            type: "GET",
+            contentType: "application/json",
+            dataType: 'json',
+                data: {"oper":7, "ident" : ident[0].value ,"nomb" : nombre[0].value, "ape" : apellido[0].value, "dire" : direccion[0].value, "comp_dire" : compdire[0].value  ,"tel" : telefono[0].value , "email" : email[0].value, "celular" : otrotelefono[0].value },         
 
-        });
-          alert("Datos de Cliente Actualizados");
-         dialog1.dialog("close");
-       }else{
-        alert("Campos vacios");
-       }
+            });
+               alert("Datos de Cliente Actualizados");
+                dialog1.dialog("close");
+              }else{
+                alert("Campos vacios");
+              }
 
           }
         }
 });
 
 // load content and open dialog
-dialog1.dialog('open');
+          dialog1.dialog('open');
 
 
 }

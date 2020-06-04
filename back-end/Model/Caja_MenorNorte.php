@@ -1,12 +1,14 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+$cadena = explode("/",$_SERVER["DOCUMENT_ROOT"]  );
 
-require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/back-end/ConexionBD/Conexion.php');
+if ($cadena[2] == "domiready") {
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/back-end/ConexionBD/Conexion.php');
+}
+else{
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]).'/domiready' . '/back-end/ConexionBD/Conexion.php');
+}
+
 
 class Caja_MenorNorte {
 

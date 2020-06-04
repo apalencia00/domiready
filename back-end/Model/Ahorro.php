@@ -1,6 +1,13 @@
 <?php
 
-require '../ConexionBD/Conexion.php';
+$cadena = explode("/",$_SERVER["DOCUMENT_ROOT"]  );
+
+if ($cadena[2] == "domiready") {
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]) . '/back-end/ConexionBD/Conexion.php');
+}
+else{
+    require_once(realpath($_SERVER["DOCUMENT_ROOT"]).'/domiready' . '/back-end/ConexionBD/Conexion.php');
+}
 
 class Ahorro {
     
